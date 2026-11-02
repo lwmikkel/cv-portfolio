@@ -33,9 +33,38 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast");
 
+app.MapGet("/projects", () =>
+{
+    var projects = new []
+    {
+        new Project (
+        
+            "Machine learning project quote 2",
+            "Estimates the probability for a League of legends team to win",
+            "...."
+
+        ),
+        new Project(
+            "Ai invoice reader",
+            "Reads invoices, calculates tax and output them in excel file with color on which is wrong and right",
+            "...." 
+        ),
+        new Project(
+            "2. Semester project: Event platform Aalborg university ",
+            "Platform for Aalborg university for events. Fullstack web application",
+            "..."
+        )
+
+    };
+    return projects;
+});
+
+
 app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
+
+record Project(string Name, string Description, string Link);
