@@ -11,10 +11,16 @@ function App() {
   }, [])
 
   return(
-    <ul>
-      {projects.map(project => <li key={project.name}>{project.name} - {project.description}</li>)}
-    </ul>
-  )
-}
+      <div> 
+      {projects.map(project => 
+      <div className='projects' key={project.name}>
+      <h2>{project.name}</h2>
+      <p>{project.description}</p>
+      <a href = {project.link}>Read more</a>
+      </div>
+      )}
+      </div>
+    
+)}  
 
 export default App
