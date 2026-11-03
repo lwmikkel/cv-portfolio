@@ -36,6 +36,29 @@ namespace Portfolio.Api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Projects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Estimates the probability for a League of legends team to win",
+                            Link = "....",
+                            Name = "Machine learning project quote 2"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Reads invoices, calculates tax and output them in excel file with color on which is wrong and right",
+                            Link = "....",
+                            Name = "Ai invoice reader"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Platform for Aalborg university for events. Fullstack web application",
+                            Link = "...",
+                            Name = "2. Semester project: Event platform Aalborg university "
+                        });
                 });
 #pragma warning restore 612, 618
         }
