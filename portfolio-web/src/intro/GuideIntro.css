@@ -1,0 +1,459 @@
+/* Everything inside the shadow root starts from a clean slate. */
+:host {
+  all: initial;
+  display: block;
+}
+
+/* All styles of the intro. Every class starts with "gi-" so nothing here can clash with the rest of the site.
+   Sizes and positions that depend on the layout (desktop / phone) are set inline from config.js. */
+
+.gi-root {
+  --gi-ink: #111111;
+  --gi-ink-2: #3f4147;
+  --gi-mute: #5f6368;
+  --gi-line: #d6d3cb;
+  --gi-line-2: #e0ded7;
+  --gi-teal: #0f766e;
+  --gi-font: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --gi-mono: 'Geist Mono', ui-monospace, Menlo, Consolas, monospace;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  text-align: left;
+  line-height: normal;
+  letter-spacing: normal;
+  font-size: 16px;
+  font-weight: 400;
+  overflow: hidden;
+  background: radial-gradient(ellipse 62% 60% at 50% 45%, #ffffff, #f4f3ef);
+  color: var(--gi-ink);
+  font-family: var(--gi-font);
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+}
+.gi-root *,
+.gi-root *::before,
+.gi-root *::after {
+  box-sizing: border-box;
+}
+.gi-root button {
+  font-family: inherit;
+}
+.gi-root button:focus-visible {
+  outline: 2px solid var(--gi-teal);
+  outline-offset: -4px;
+}
+
+/* the stage: a fixed-size box in the middle, scaled to fit the screen (the scale is set inline) */
+.gi-fit {
+  position: absolute;
+  left: max(8px, env(safe-area-inset-left, 0px));
+  right: max(8px, env(safe-area-inset-right, 0px));
+  top: env(safe-area-inset-top, 0px);
+  bottom: env(safe-area-inset-bottom, 0px);
+}
+.gi-stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform-origin: 50% 50%;
+}
+.gi-layer {
+  position: absolute;
+  inset: 0;
+}
+.gi-none {
+  pointer-events: none;
+}
+.gi-abs {
+  position: absolute;
+}
+
+/* furniture */
+.gi-name {
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.045em;
+  color: var(--gi-ink);
+}
+.gi-tag {
+  color: var(--gi-ink-2);
+  margin-top: 8px;
+}
+.gi-glow {
+  background: radial-gradient(ellipse 60% 60% at 50% 40%, rgba(228, 226, 219, 0.75), rgba(228, 226, 219, 0));
+}
+.gi-dots {
+  background-image: radial-gradient(#d6d3ca 1.5px, transparent 1.5px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse 60% 55% at 50% 45%, #000 30%, transparent 100%);
+  mask-image: radial-gradient(ellipse 60% 55% at 50% 45%, #000 30%, transparent 100%);
+}
+.gi-frame {
+  position: absolute;
+  background: #ffffff;
+  border: 1px solid #dad7ce;
+  box-shadow: 0 24px 50px rgba(60, 50, 35, 0.16);
+}
+.gi-bar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 0 10px;
+}
+.gi-bar i {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #dad7ce;
+}
+.gi-bar span {
+  margin-left: 10px;
+  height: 10px;
+  width: 150px;
+  max-width: 50%;
+  border-radius: 5px;
+  background: #f0eee8;
+}
+.gi-neck {
+  background: linear-gradient(90deg, #e4e2db, #f0eee8, #e4e2db);
+}
+.gi-base {
+  border-radius: 6px;
+  background: #dad7cf;
+}
+.gi-soft {
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(60, 50, 35, 0.18), rgba(60, 50, 35, 0));
+}
+
+/* the screen that shows the website */
+.gi-site {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 1280px;
+  height: 800px;
+  transform-origin: 0 0;
+  z-index: 2;
+  overflow: hidden;
+  background: #ffffff;
+}
+.gi-siteimg {
+  display: block;
+  width: 1280px;
+  height: 800px;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.gi-sitehit {
+  position: absolute;
+  z-index: 6;
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+/* the four logos */
+.gi-tilebox {
+  position: absolute;
+  animation: gi-float 4.4s ease-in-out infinite;
+}
+.gi-tl {
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  border: 1px solid var(--gi-line-2);
+  color: var(--gi-ink);
+  box-shadow: 0 12px 26px rgba(60, 50, 35, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.gi-tl img {
+  display: block;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.gi-tlab {
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  margin-top: 9px;
+}
+.gi-tbtn {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+/* the robot layer */
+.gi-canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+.gi-canvas.gi-on {
+  opacity: 1;
+}
+.gi-pos {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  will-change: transform;
+}
+.gi-bsh {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(60, 50, 35, 0.3), rgba(60, 50, 35, 0));
+}
+.gi-say {
+  position: absolute;
+  left: 0;
+  transform: translate(-50%, 0);
+  opacity: 0;
+  background: #ffffff;
+  border: 1px solid #dad7ce;
+  border-radius: 14px;
+  padding: 6px 12px;
+  font-weight: 600;
+  color: var(--gi-ink);
+  white-space: nowrap;
+  box-shadow: 0 8px 20px rgba(60, 50, 35, 0.14);
+}
+.gi-say::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -6px;
+  width: 10px;
+  height: 10px;
+  background: #ffffff;
+  border-right: 1px solid #dad7ce;
+  border-bottom: 1px solid #dad7ce;
+  transform: translateX(-50%) rotate(45deg);
+}
+.gi-say.gi-wrap {
+  white-space: normal;
+  text-align: center;
+}
+.gi-cur {
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  pointer-events: none;
+  margin: -3px 0 0 -4px;
+}
+.gi-rip {
+  position: absolute;
+  left: -26px;
+  top: -26px;
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 2.5px solid var(--gi-teal);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* the chat area: read-only. Only the topic buttons and the logos can be clicked. */
+.gi-chat {
+  position: absolute;
+  height: 92px;
+}
+/* wide screens: your message (right) and the answer (left) sit on one line, centred on each other */
+.gi-chat.gi-row {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  height: 56px;
+}
+.gi-chat.gi-row .gi-um,
+.gi-chat.gi-row .gi-am {
+  position: static;
+  min-width: 0;
+}
+.gi-chat.gi-row .gi-um {
+  flex: none;
+  white-space: nowrap;
+}
+
+.gi-um {
+  position: absolute;
+  right: 0;
+  top: 0;
+  max-width: 100%;
+  background: #111111;
+  color: #ffffff;
+  border-radius: 16px 16px 4px 16px;
+  padding: 9px 16px;
+  font-weight: 600;
+  opacity: 0;
+}
+.gi-am {
+  position: absolute;
+  left: 0;
+  top: 30px;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #ffffff;
+  border: 1px solid var(--gi-line);
+  border-radius: 16px 16px 16px 4px;
+  padding: 8px 10px 8px 12px;
+  box-shadow: 0 10px 24px rgba(60, 50, 35, 0.1);
+  opacity: 0;
+}
+.gi-av {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #12171a;
+  position: relative;
+  flex-shrink: 0;
+}
+.gi-av::after {
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 10px;
+  width: 16px;
+  height: 8px;
+  border: 3px solid #8cf0e2;
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+}
+.gi-rb {
+  margin-left: 6px;
+  font-weight: 700;
+  color: #ffffff;
+  background: var(--gi-teal);
+  border-radius: 10px;
+  padding: 8px 13px;
+  text-decoration: none;
+  white-space: nowrap;
+  pointer-events: none;
+  border: 0;
+  cursor: pointer;
+  line-height: normal;
+  display: inline-block;
+}
+.gi-copy {
+  min-width: 6.6em; /* "Copy" and "Copied!" are equally wide, so the button does not jump */
+  text-align: center;
+}
+.gi-chips {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  pointer-events: auto;
+}
+.gi-chiplabel {
+  color: var(--gi-mute);
+  margin-right: 4px;
+}
+.gi-chip {
+  font-weight: 600;
+  color: var(--gi-ink);
+  background: #ffffff;
+  border: 1px solid var(--gi-line);
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+.gi-chip.gi-primary {
+  border-color: var(--gi-teal);
+  color: var(--gi-teal);
+}
+.gi-chip:hover {
+  background: #f2f1ec;
+}
+.gi-input {
+  position: absolute;
+  border-radius: 18px;
+  background: #f7f6f2;
+  border: 1px solid var(--gi-line-2);
+  box-shadow: 0 8px 22px rgba(60, 50, 35, 0.07);
+  pointer-events: none;
+  cursor: default;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.gi-ph {
+  position: absolute;
+  top: 0;
+  right: 52px;
+  display: flex;
+  align-items: center;
+  color: #8a8f95;
+  white-space: nowrap;
+  overflow: hidden;
+}
+.gi-ty {
+  position: absolute;
+  overflow: hidden;
+  white-space: nowrap;
+  width: 0;
+  visibility: hidden;
+  box-sizing: content-box; /* the width is the width of the letters; the caret is on top of that */
+  font-family: var(--gi-font);
+  color: var(--gi-ink);
+  border-right: 2px solid var(--gi-ink);
+  animation: gi-caret 1s steps(1) infinite;
+}
+.gi-snd {
+  position: absolute;
+  right: 8px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@keyframes gi-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+@keyframes gi-caret {
+  0%,
+  49% {
+    border-color: #111111;
+  }
+  50%,
+  100% {
+    border-color: transparent;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gi-tilebox {
+    animation: none;
+  }
+}

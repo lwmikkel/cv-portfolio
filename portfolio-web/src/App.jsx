@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react'
 import './App.css'
+import { GuideIntro } from './intro'
 
 function App() {
   const [projects, setProjects] = useState([])
+  const [entered, setEntered] = useState(false)
 
   useEffect(() => {
     fetch("https://lwm-portfolio-api-c5dvg2awbrd7hcfd.norwayeast-01.azurewebsites.net/projects")
@@ -11,6 +13,7 @@ function App() {
   }, [])
 
   return(
+      <>
       <div> 
       {projects.map(project => 
       <div className='projects' key={project.name}>
@@ -20,7 +23,8 @@ function App() {
       </div>
       )}
       </div>
-    
+      {!entered && <GuideIntro onEnter={() => setEntered(true)} />}
+      </>
 )}  
 
 export default App
