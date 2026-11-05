@@ -5,7 +5,7 @@ function App() {
   const [projects, setProjects] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:5262/projects")
+    fetch("https://lwm-portfolio-api-c5dvg2awbrd7hcfd.norwayeast-01.azurewebsites.net/projects")
     .then(response => response.json())
     .then(data => setProjects(data))
   }, [])

@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/2f6474a4-d988-4949-8fdc-155ed2987330/resourceGroups/rg-portfolio/providers/Microsoft.Web/sites/lwm-portfolio-api",
+    "appService.deploySubpath": "Portfolio.Api"
+}
