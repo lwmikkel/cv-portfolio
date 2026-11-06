@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
 import { GuideIntro } from './intro'
+import Header from './components/Header.jsx'
 
 function App() {
   const [projects, setProjects] = useState([])
@@ -14,6 +15,7 @@ function App() {
 
   return(
       <>
+      <Header />
       <div> 
       {projects.map(project => 
       <div className='projects' key={project.name}>
