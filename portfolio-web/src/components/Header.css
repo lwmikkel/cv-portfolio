@@ -1,0 +1,28 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 64px;
+    padding: 0 12px 0 24px;
+    border: 1px solid var(--border-strong);
+    border-radius: 999px;
+    background: var(--bg);
+    margin: 28px 48px 0;
+}
+
+.header-nav {
+  display: flex;
+  gap: 24px;
+}
+
+.header a {
+  color: var(--text2);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.header p {
+  margin: 0;
+  font-weight: 700;
+}
