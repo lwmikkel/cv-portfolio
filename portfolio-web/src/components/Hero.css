@@ -1,0 +1,125 @@
+.hero {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+  height: 520px;
+  margin: 16px 48px 0;
+}
+.hero-main,
+.hero-photo {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.hero-main {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 6px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--text2);
+  background: var(--bg);
+}
+
+.hero-badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22C55E;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: 96px;
+  line-height: 0.95;
+  font-weight: 800;
+  letter-spacing: -0.05em;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--text2);
+  max-width: 540px;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.hero-buttons a {
+  padding: 12px 18px;
+  border: 1px solid var(--border-strong);
+  border-radius: 12px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.hero-buttons a:first-child {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #FFFFFF;
+}
+
+
+.hero-photo {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-photo img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 28%;
+}
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(17, 17, 17, 0) 60%, rgba(17, 17, 17, 0.8));
+}
+
+.hero-photo-caption {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 24px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  color: #FFFFFF;
+}
+
+.hero-photo-caption strong {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.hero-photo-caption span {
+  font-size: 14px;
+  color: #E8E8E4;
+}
