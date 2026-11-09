@@ -3,6 +3,7 @@ import './App.css'
 import { GuideIntro } from './intro'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
+import About from './components/About.jsx'
 
 function App() {
   const [projects, setProjects] = useState([])
@@ -18,6 +19,7 @@ function App() {
       <>
       <Header />
       <Hero />
+      <About />
       <div> 
       {projects.map(project => 
       <div className='projects' key={project.name}>

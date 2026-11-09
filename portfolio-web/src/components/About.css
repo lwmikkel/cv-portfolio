@@ -1,0 +1,53 @@
+.about {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: 16px;
+  height: 280px;
+  margin: 16px 48px 0;
+}
+
+.about-me {
+  padding: 36px;
+  gap: 18px;
+}
+
+.about-lead {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.03em;
+}
+
+.about-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: var(--text2);
+}
+
+.about-github {
+  padding: 36px;
+  justify-content: space-between;
+  background: var(--text);
+  border-color: var(--text);
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.about-github .label {
+  color: #C9C9C4;
+}
+
+.about-github-name {
+  font-size: 26px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+}
+
+.about-github-cta {
+  font-size: 14px;
+  font-weight: 600;
+  margin-top: 8px;
+  color: #E8E8E4;
+}

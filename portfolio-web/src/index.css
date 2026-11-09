@@ -19,3 +19,25 @@ body {
   font-family: 'Geist', system-ui, sans-serif;
 }
 
+*,
+*::before,
+*::after{
+  box-sizing: border-box;
+}
+
+.tile{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--pad);
+  display: flex; flex-direction: column; gap: 14px;
+  position: relative; overflow: hidden;
+  color: var(--text);
+}
+
+.label{
+  font-weight: 600; font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+}

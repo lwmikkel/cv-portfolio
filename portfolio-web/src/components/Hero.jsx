@@ -11,7 +11,7 @@ function Hero(){
                 <div className = "hero-buttons">
                     <a href="#projects">View projects</a>
                     <a href="https://github.com/lwmikkel">GitHub</a>
-                    <a href="https://www.linkedin.com/in/mikkel-wilquin-742a66248">LinkedIn</a>
+                    <a href="https://www.linkedin.com/in/mikkel-wilquin-742a66248/">LinkedIn</a>
                 </div>
             </div>
             <div className="hero-photo">
