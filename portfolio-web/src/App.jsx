@@ -5,6 +5,7 @@ import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
 import Projects from './components/Projects.jsx'
+import Experience from './components/Experience.jsx'
 
 function App() {
   const [projects, setProjects] = useState([])
@@ -22,6 +23,7 @@ function App() {
       <Hero />
       <About />
       <Projects projects={projects} />
+      <Experience />
       {!entered && <GuideIntro onEnter={() => setEntered(true)} />}
       </>
 )}  

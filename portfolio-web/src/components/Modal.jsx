@@ -1,9 +1,7 @@
 import { useEffect } from "react"
 import "./Modal.css"
 
-// Et pop up-vindue ovenpå siden. Indholdet sendes ind som children.
 function Modal({ label, onClose, children }) {
-  // Lukker vinduet med Escape og låser siden bagved, så længe vinduet er åbent
   useEffect(() => {
     const onKey = (e) => {
       if (e.key === 'Escape') onClose()

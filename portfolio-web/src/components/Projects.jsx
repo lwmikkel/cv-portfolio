@@ -9,7 +9,6 @@ function Projects({ projects }) {
     <section id="projects" className="projects">
       <div className="projects-head">
         <h2>Projects</h2>
-        <p>Press Read more to see the details.</p>
       </div>
       <div className="projects-grid">
         {projects.map(project => (

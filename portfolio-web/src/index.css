@@ -42,7 +42,6 @@ body {
   color: var(--text3);
 }
 
-/* Lille rundt mærke, fx til teknologier */
 .chip {
   font-size: 13px;
   font-weight: 500;

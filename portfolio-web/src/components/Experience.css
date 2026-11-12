@@ -1,0 +1,66 @@
+.experience-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 8px 24px;
+  margin: 0 48px;
+  padding: 48px 4px 8px;
+}
+
+.experience-head h2 {
+  margin: 0;
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 0 48px 48px;
+}
+
+.experience-card {
+  min-height: 280px;
+}
+
+.experience-card .label {
+  color: var(--accent);
+}
+
+.experience-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.experience-org {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text2);
+}
+
+.experience-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text2);
+}
+
+.experience-card button {
+  margin-top: auto;
+  align-self: flex-start;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
