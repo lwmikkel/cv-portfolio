@@ -1,0 +1,76 @@
+/* Overskriften: "Projects" til venstre, lille tekst til højre */
+.projects-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin: 0 48px;
+  padding: 48px 4px 8px;
+}
+
+.projects-head h2 {
+  margin: 0;
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.projects-head p {
+  margin: 0;
+  font-size: 15px;
+  color: var(--text3);
+}
+
+/* Tre lige brede kort ved siden af hinanden */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 0 48px 48px;
+}
+
+/* Selve kortet (har allerede .tile-udseendet) */
+.project-card {
+  min-height: 320px;
+}
+
+.project-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.project-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text2);
+}
+
+/* "Read more"-knappen er nu en <button>, så den skal nulstilles lidt */
+.project-card button {
+  margin-top: 6px;
+  align-self: flex-start;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.project-card .label {
+  color: var(--accent);
+}
+
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+}

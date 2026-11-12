@@ -21,7 +21,15 @@ namespace Portfolio.Api.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Bullets")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Kicker")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
@@ -33,6 +41,10 @@ namespace Portfolio.Api.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Tech")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.HasKey("Id");
 
                     b.ToTable("Projects");
@@ -41,23 +53,32 @@ namespace Portfolio.Api.Migrations
                         new
                         {
                             Id = 1,
+                            Bullets = "....",
                             Description = "Estimates the probability for a League of legends team to win",
+                            Kicker = "Machine learning",
                             Link = "....",
-                            Name = "Machine learning project quote 2"
+                            Name = "Machine learning project quote 2",
+                            Tech = "Python, Pandas"
                         },
                         new
                         {
                             Id = 2,
+                            Bullets = "Extracts supplier, number, amounts and VAT from an invoice. | Checks that the VAT and the total add up. | Writes the result to an Excel report with colours for OK and errors.",
                             Description = "Reads invoices, calculates tax and output them in excel file with color on which is wrong and right",
+                            Kicker = "AI project",
                             Link = "....",
-                            Name = "Ai invoice reader"
+                            Name = "Ai invoice reader",
+                            Tech = "Claude API, Excel"
                         },
                         new
                         {
                             Id = 3,
+                            Bullets = "Event listing and sign-up for students.| A server in Node.js and Express with the data stored in MongoDB.",
                             Description = "Platform for Aalborg university for events. Fullstack web application",
+                            Kicker = "2nd semester project",
                             Link = "...",
-                            Name = "2. Semester project: Event platform Aalborg university "
+                            Name = "Event platform Aalborg university ",
+                            Tech = "Node.js, Express, MongoDB"
                         });
                 });
 #pragma warning restore 612, 618

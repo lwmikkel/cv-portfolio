@@ -4,13 +4,14 @@ import { GuideIntro } from './intro'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import About from './components/About.jsx'
+import Projects from './components/Projects.jsx'
 
 function App() {
   const [projects, setProjects] = useState([])
   const [entered, setEntered] = useState(false)
 
   useEffect(() => {
-    fetch("https://lwm-portfolio-api-c5dvg2awbrd7hcfd.norwayeast-01.azurewebsites.net/projects")
+    fetch(`${import.meta.env.VITE_API_URL}/projects`)
     .then(response => response.json())
     .then(data => setProjects(data))
   }, [])
@@ -20,15 +21,7 @@ function App() {
       <Header />
       <Hero />
       <About />
-      <div> 
-      {projects.map(project => 
-      <div className='projects' key={project.name}>
-      <h2>{project.name}</h2>
-      <p>{project.description}</p>
-      <a href = {project.link}>Read more</a>
-      </div>
-      )}
-      </div>
+      <Projects projects={projects} />
       {!entered && <GuideIntro onEnter={() => setEntered(true)} />}
       </>
 )}  

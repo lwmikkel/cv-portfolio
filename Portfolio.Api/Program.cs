@@ -56,4 +56,4 @@ record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
     public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
 }
 
-public record Project(int Id, string Name, string Description, string Link);
+public record Project(int Id, string Name, string Description, string Link, string Kicker, string Tech, string Bullets);

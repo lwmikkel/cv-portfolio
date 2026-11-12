@@ -41,3 +41,14 @@ body {
   text-transform: uppercase;
   color: var(--text3);
 }
+
+/* Lille rundt mærke, fx til teknologier */
+.chip {
+  font-size: 13px;
+  font-weight: 500;
+  padding: 5px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  color: var(--text2);
+  background: var(--bg);
+}
