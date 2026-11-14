@@ -1,8 +1,5 @@
 .hero {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 16px;
-  margin: 16px 48px 0;
+  display: contents;
 }
 
 .hero-main,
@@ -54,7 +51,7 @@
 .hero-photo {
   position: relative;
   overflow: hidden;
-  min-height: 420px;
+  min-height: 0;
 }
 
 .hero-photo img {
@@ -102,11 +99,6 @@
 }
 
 @media (max-width: 900px) {
-  .hero {
-    grid-template-columns: minmax(0, 1fr);
-    margin: 16px 16px 0;
-  }
-
   .hero-main {
     padding: 32px 24px 28px;
   }

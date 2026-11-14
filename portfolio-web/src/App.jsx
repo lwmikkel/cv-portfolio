@@ -21,8 +21,10 @@ function App() {
   return(
       <>
       <Header />
-      <Hero />
-      <About />
+      <div className="top">
+        <Hero />
+        <About />
+      </div>
       <TechBand />
       <Projects projects={projects} />
       <Timeline />

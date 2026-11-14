@@ -1,0 +1,33 @@
+.top {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 16px;
+  margin: 16px 48px 0;
+}
+
+.top > .about {
+  grid-column: 1;
+}
+
+.top .hero-main {
+  grid-column: 1;
+}
+
+.top .hero-photo {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+@media (max-width: 900px) {
+  .top {
+    grid-template-columns: minmax(0, 1fr);
+    margin: 16px 16px 0;
+  }
+
+  .top > .about,
+  .top .hero-main,
+  .top .hero-photo {
+    grid-column: 1;
+    grid-row: auto;
+  }
+}

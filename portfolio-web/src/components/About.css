@@ -1,5 +1,5 @@
 .about {
-  margin: 16px 48px 0;
+  margin: 0;
 }
 
 .about-me {
@@ -24,10 +24,6 @@
 }
 
 @media (max-width: 900px) {
-  .about {
-    margin: 16px 16px 0;
-  }
-
   .about-me {
     padding: 24px;
   }
