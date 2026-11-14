@@ -9,7 +9,13 @@
   --accent: #0F766E;
   --radius: 24px;
   --pad: 28px;
+  --gutter: clamp(48px, 7.5vw, 96px);
+}
 
+@media (max-width: 900px) {
+  :root {
+    --gutter: 16px;
+  }
 }
 
 body {

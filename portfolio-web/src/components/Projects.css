@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin: 0 48px;
+  margin: 0 var(--gutter);
   padding: 48px 4px 8px;
 }
 
@@ -18,7 +18,7 @@
   display: grid;
   grid-template-columns: minmax(260px, 4fr) minmax(0, 8fr);
   gap: 16px;
-  margin: 16px 48px 48px;
+  margin: 16px var(--gutter) 48px;
   align-items: stretch;
 }
 

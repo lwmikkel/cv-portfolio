@@ -2,7 +2,7 @@
   display: grid;
   grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
   gap: 16px;
-  margin: 16px 48px 0;
+  margin: 16px var(--gutter) 0;
 }
 
 .top > .about {
@@ -21,7 +21,6 @@
 @media (max-width: 900px) {
   .top {
     grid-template-columns: minmax(0, 1fr);
-    margin: 16px 16px 0;
   }
 
   .top > .about,
