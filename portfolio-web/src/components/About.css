@@ -2,7 +2,6 @@
   display: grid;
   grid-template-columns: 7fr 5fr;
   gap: 16px;
-  height: 280px;
   margin: 16px 48px 0;
 }
 
@@ -26,28 +25,73 @@
   color: var(--text2);
 }
 
-.about-github {
+.about-now {
   padding: 36px;
+  gap: 8px;
+}
+
+.about-now-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.about-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #1B9E5A;
+}
+
+.about-now-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  background: var(--text);
-  border-color: var(--text);
-  color: #FFFFFF;
-  text-decoration: none;
+  margin: 0;
 }
 
-.about-github .label {
-  color: #C9C9C4;
+.about-now-list > div {
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  align-items: baseline;
+  gap: 12px;
+  padding: 16px 0;
+  border-top: 1px solid var(--border-strong);
 }
 
-.about-github-name {
-  font-size: 26px;
-  font-weight: 700;
-  letter-spacing: -0.03em;
+.about-now-list > div:first-child {
+  border-top: none;
 }
 
-.about-github-cta {
-  font-size: 14px;
+.about-now-list dt {
+  font-size: 12px;
   font-weight: 600;
-  margin-top: 8px;
-  color: #E8E8E4;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text3);
+}
+
+.about-now-list dd {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.45;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+@media (max-width: 900px) {
+  .about {
+    grid-template-columns: minmax(0, 1fr);
+    margin: 16px 16px 0;
+  }
+
+  .about-me,
+  .about-now {
+    padding: 24px;
+  }
+
+  .about-lead {
+    font-size: 24px;
+  }
 }
