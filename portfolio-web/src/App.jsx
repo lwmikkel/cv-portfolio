@@ -22,8 +22,8 @@ function App() {
       <>
       <Header />
       <Hero />
-      <TechBand />
       <About />
+      <TechBand />
       <Projects projects={projects} />
       <Timeline />
       {!entered && <GuideIntro onEnter={() => setEntered(true)} />}
