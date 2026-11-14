@@ -1,0 +1,7 @@
+API.env
+.env
+Godkendt/
+Fejl/
+Mangler/
+faktura_rapport_*.xlsx
+__pycache__/
