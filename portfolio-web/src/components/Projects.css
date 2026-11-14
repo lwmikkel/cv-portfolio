@@ -14,52 +14,217 @@
   letter-spacing: -0.045em;
 }
 
-.projects-grid {
+.projects-layout {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: minmax(260px, 4fr) minmax(0, 8fr);
   gap: 16px;
-  margin: 0 48px 48px;
+  margin: 16px 48px 48px;
+  align-items: stretch;
 }
 
-.project-card {
-  min-height: 320px;
+.projects-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.project-title {
-  font-size: 28px;
+.project-pick {
+  flex: 1 1 0;
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 20px 24px 20px 32px;
+  text-align: left;
+  cursor: pointer;
+  font-family: inherit;
+  color: var(--text);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: inset 8px 0 0 var(--c);
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.project-pick .label {
+  color: var(--c);
+}
+
+.project-pick-title {
+  font-size: 26px;
   font-weight: 800;
-  letter-spacing: -0.035em;
+  letter-spacing: -0.04em;
   line-height: 1.05;
 }
 
-.project-card p {
+.project-pick-tech {
+  font-size: 14px;
+  color: var(--text3);
+}
+
+.project-pick:hover {
+  border-color: color-mix(in srgb, var(--c) 40%, var(--border));
+}
+
+.project-pick.active {
+  background: color-mix(in srgb, var(--c) 8%, var(--card));
+  border-color: color-mix(in srgb, var(--c) 35%, var(--border));
+}
+
+.project-pick:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--c) 45%, transparent);
+  outline-offset: 2px;
+}
+
+.project-detail {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 36px;
+  background: color-mix(in srgb, var(--c) 7%, var(--card));
+  border: 1px solid color-mix(in srgb, var(--c) 28%, var(--border));
+  border-radius: var(--radius);
+}
+
+.project-detail-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-detail-head .label {
+  color: var(--c);
+}
+
+.project-live {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: var(--c);
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.project-detail h3 {
   margin: 0;
-  font-size: 15px;
-  line-height: 1.55;
+  font-size: 44px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.project-detail-top {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.project-detail-top.single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.project-detail-top p {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.6;
   color: var(--text2);
 }
 
-.project-card button {
-  margin-top: 6px;
-  align-self: flex-start;
-  padding: 12px 18px;
-  border: none;
-  border-radius: 12px;
-  background: var(--accent);
-  color: #FFFFFF;
-  font-family: inherit;
+.project-detail-top ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.project-detail-top li {
+  position: relative;
+  padding-left: 18px;
   font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
+  line-height: 1.5;
+  color: var(--text2);
 }
 
-.project-card .label {
-  color: var(--accent);
+.project-detail-top li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  width: 8px;
+  height: 2px;
+  background: var(--c);
 }
 
-.project-tech {
+.project-detail-foot {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.project-chips {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin-top: auto;
+}
+
+.project-link {
+  padding: 12px 18px;
+  border-radius: 12px;
+  background: var(--c);
+  color: #FFFFFF;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+@media (max-width: 960px) {
+  .projects-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .projects-list {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: 4px;
+  }
+
+  .project-pick {
+    flex: 0 0 260px;
+    min-height: 0;
+  }
+
+  .project-detail-top {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 600px) {
+  .projects-head,
+  .projects-layout {
+    margin-left: 16px;
+    margin-right: 16px;
+  }
+
+  .projects-head h2 {
+    font-size: 40px;
+  }
+
+  .project-detail {
+    padding: 24px 18px;
+  }
+
+  .project-detail h3 {
+    font-size: 32px;
+  }
 }

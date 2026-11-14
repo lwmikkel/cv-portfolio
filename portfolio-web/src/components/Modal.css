@@ -54,7 +54,7 @@
 }
 
 .modal-main .label {
-  color: var(--accent);
+  color: var(--c, var(--accent));
 }
 
 .modal h3 {
@@ -129,7 +129,7 @@
   top: 10px;
   width: 8px;
   height: 2px;
-  background: var(--accent);
+  background: var(--c, var(--accent));
 }
 
 .modal-chips {

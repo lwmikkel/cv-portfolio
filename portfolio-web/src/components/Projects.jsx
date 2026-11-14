@@ -1,58 +1,39 @@
-import "./Projects.css"
-import { useState } from "react"
-import Modal from "./Modal.jsx"
+import { useState } from 'react'
+import './Projects.css'
+import ProjectDetail from './ProjectDetail.jsx'
+import { kindFor } from './demos/kinds.js'
 
 function Projects({ projects }) {
-  const [selected, setSelected] = useState(null)
+  const [selectedId, setSelectedId] = useState(null)
+  const current = projects.find(project => project.id === selectedId) ?? projects[0]
 
   return (
     <section id="projects" className="projects">
       <div className="projects-head">
         <h2>Projects</h2>
       </div>
-      <div className="projects-grid">
-        {projects.map(project => (
-          <div className="tile project-card" key={project.id}>
-            <div className="label">{project.kicker}</div>
-            <div className="project-title">{project.name}</div>
-            <p>{project.description}</p>
-            <div className="project-tech">
-              {project.tech.split(',').map(t => (
-                <span className="chip" key={t}>{t.trim()}</span>
-              ))}
-            </div>
-            <button onClick={() => setSelected(project)}>Read more →</button>
-          </div>
-        ))}
-      </div>
-      {selected && (
-        <Modal label={selected.name} onClose={() => setSelected(null)}>
-          <div className="modal-main">
-            <div className="label">{selected.kicker}</div>
-            <h3>{selected.name}</h3>
-            <p>{selected.description}</p>
-            <a className="modal-link" href={selected.link} target="_blank" rel="noreferrer">View on GitHub</a>
+
+      {current && (
+        <div className="projects-layout">
+          <div className="projects-list">
+            {projects.map(project => (
+              <button
+                key={project.id}
+                type="button"
+                className={`project-pick${project.id === current.id ? ' active' : ''}`}
+                style={{ '--c': kindFor(project).color }}
+                aria-pressed={project.id === current.id}
+                onClick={() => setSelectedId(project.id)}
+              >
+                <span className="label">{project.kicker}</span>
+                <span className="project-pick-title">{project.name.trim()}</span>
+                <span className="project-pick-tech">{project.tech.split(',').map(t => t.trim()).join(' · ')}</span>
+              </button>
+            ))}
           </div>
 
-          <div className="modal-side">
-            <div className="modal-section">
-              <div className="label">What I built</div>
-              <ul>
-                {selected.bullets.split('|').map(b => (
-                  <li key={b}>{b.trim()}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="modal-section">
-              <div className="label">Built with</div>
-              <div className="modal-chips">
-                {selected.tech.split(',').map(t => (
-                  <span className="chip" key={t}>{t.trim()}</span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </Modal>
+          <ProjectDetail key={current.id} project={current} />
+        </div>
       )}
     </section>
   )
