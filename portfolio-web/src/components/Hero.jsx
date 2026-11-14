@@ -8,8 +8,8 @@ function Hero(){
                 <h1>Hi, I'm Mikkel.</h1>
                 <p className="hero-lead">Software student at Aalborg University Copenhagen.</p>
                 <div className="hero-text">
-                    <p>What drives me is taking an idea all the way to something other people can actually use. I enjoy the careful parts as much as the first version: finding what is wrong, testing it on someone who did not build it and making it simpler for whoever has to use it.</p>
-                    <p>Alongside my studies I work on the IT service desk at Coop, helping store staff who are in a hurry. It taught me to stay calm, work in a structured way and explain technical problems in plain language. I am now looking for a student developer job where I can contribute what I know and learn the rest from people who do this every day.</p>
+                    <p>What drives me is taking an idea all the way to something you can actually use.</p>
+                    <p>I am looking for a student job where I can work on something real, see how it looks in practice outside my own projects and my studies, and learn from skilled people with more experience.</p>
                 </div>
                 <div className = "hero-actions">
                     <a className="hero-primary" href="#projects">View my projects <span aria-hidden="true">→</span></a>
