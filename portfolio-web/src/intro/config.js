@@ -39,7 +39,7 @@ export const COPY = {
 
 // Where the main button of your front page sits in the 1280x800 screenshot (page pixels).
 // The robot's cursor clicks exactly there. Change it if you move the button.
-export const SITE_BUTTON = { x: 158, y: 566 }
+export const SITE_BUTTON = { x: 187, y: 603 }
 
 // Idle wandering and walking (seconds). The wandering loops forever until the visitor picks something.
 export const WALK = { lead: 1.2, move: 2.4, pause: 1.1, step: 0.6, speed: 230 }
