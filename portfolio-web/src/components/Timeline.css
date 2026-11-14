@@ -1,0 +1,225 @@
+.timeline-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px 24px;
+  margin: 0 48px;
+  padding: 48px 4px 24px;
+}
+
+.timeline-head h2 {
+  margin: 0;
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: -0.045em;
+}
+
+.timeline-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 48px 28px;
+  padding: 0 4px;
+}
+
+.timeline-tabs button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text2);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.timeline-tabs button.active {
+  background: var(--c);
+  border-color: var(--c);
+  color: #FFFFFF;
+}
+
+.timeline-tabs button.active .timeline-shape {
+  background: #FFFFFF;
+}
+
+.timeline-count {
+  font-size: 13px;
+  font-weight: 600;
+  opacity: 0.75;
+}
+
+.timeline {
+  list-style: none;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: 0 48px 48px;
+  padding: 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 24px;
+  bottom: 24px;
+  left: 15px;
+  width: 2px;
+  border-radius: 2px;
+  background: var(--c);
+  opacity: 0.35;
+}
+
+.timeline-item {
+  position: relative;
+  padding-left: 56px;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 22px;
+  left: 0;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid color-mix(in srgb, var(--c) 35%, transparent);
+  border-radius: 50%;
+  background: var(--bg);
+}
+
+.timeline-shape {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: var(--c);
+}
+
+.tl-work {
+  border-radius: 50%;
+}
+
+.tl-education {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  transform: rotate(45deg);
+}
+
+.tl-course {
+  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%);
+}
+
+.timeline-card {
+  gap: 12px;
+  background: color-mix(in srgb, var(--c) 6%, var(--card));
+}
+
+.timeline-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 12px;
+}
+
+.timeline-badge {
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c) 14%, #FFFFFF);
+  color: var(--c);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.timeline-logo {
+  margin-left: auto;
+  max-width: 120px;
+  max-height: 36px;
+  object-fit: contain;
+}
+
+.timeline-logo-fallback {
+  margin-left: auto;
+  padding: 6px 12px;
+  border: 1px solid var(--border-strong);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--c);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.timeline-title {
+  font-size: 28px;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+}
+
+.timeline-org {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text2);
+}
+
+.timeline-card p {
+  margin: 0;
+  font-size: 15px;
+  line-height: 1.55;
+  color: var(--text2);
+}
+
+.timeline-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.timeline-card .chip {
+  border-color: color-mix(in srgb, var(--c) 35%, var(--border-strong));
+}
+
+.timeline-card button {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 12px;
+  background: var(--c);
+  color: #FFFFFF;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .timeline-head h2 {
+    font-size: 40px;
+  }
+
+  .timeline::before {
+    left: 11px;
+  }
+
+  .timeline-item {
+    padding-left: 44px;
+  }
+
+  .timeline-dot {
+    width: 24px;
+    height: 24px;
+  }
+
+  .timeline-title {
+    font-size: 24px;
+  }
+}
