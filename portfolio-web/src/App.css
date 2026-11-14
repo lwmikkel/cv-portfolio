@@ -5,6 +5,16 @@
   margin: 16px var(--gutter) 0;
 }
 
+.top .hero-main,
+.top .about-me {
+  background: #FFFFFF;
+  border-color: #EAD9CB;
+}
+
+.top .hero-photo {
+  border-color: #EAD9CB;
+}
+
 .top > .about {
   grid-column: 1;
 }

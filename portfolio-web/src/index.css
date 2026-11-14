@@ -20,7 +20,7 @@
 
 body {
   margin: 0;
-  background: var(--bg);
+  background: linear-gradient(#F1E2D5 0, #F6ECE3 520px, #FFFFFF 980px) no-repeat var(--bg);
   color: var(--text);
   font-family: 'Geist', system-ui, sans-serif;
 }

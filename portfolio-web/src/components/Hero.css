@@ -53,12 +53,10 @@
   position: relative;
   overflow: hidden;
   min-height: 0;
-  background: linear-gradient(165deg, #EDD6C4 0%, #F6EAE2 100%);
-  border-color: #E8CDB7;
+  background: #FFFFFF;
 }
 
 .hero-photo img {
-  mix-blend-mode: multiply;
   position: absolute;
   inset: 0;
   width: 100%;
