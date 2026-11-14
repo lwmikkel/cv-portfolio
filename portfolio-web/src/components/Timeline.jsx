@@ -22,7 +22,7 @@ const timeline = [
     type: 'work',
     period: 'June 2026 – Present',
     title: 'IT Supporter',
-    org: 'Coop Service Desk',
+    org: 'Coop, Headquarters',
     logo: 'coop',
     logoText: 'Coop',
     summary: 'Phone and remote support for Coop stores, working daily in ServiceNow.',
