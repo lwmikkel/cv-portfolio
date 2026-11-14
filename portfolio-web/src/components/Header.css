@@ -100,6 +100,40 @@ html {
   display: none;
 }
 
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header-social {
+  display: flex;
+  gap: 6px;
+}
+
+.header-social a {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.header-social a:hover {
+  background: var(--text);
+  border-color: var(--text);
+  color: #FFFFFF;
+}
+
+.header-social a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .header-status {
   display: inline-flex;
   align-items: center;
@@ -152,6 +186,15 @@ html {
     gap: 8px;
   }
 
+  .header-right {
+    margin-left: auto;
+  }
+
+  .header-social a {
+    width: 34px;
+    height: 34px;
+  }
+
   .header-nav {
     gap: 0;
   }
@@ -167,5 +210,26 @@ html {
 
   .nav-short {
     display: inline;
+  }
+}
+
+@media (max-width: 440px) {
+  .header-nav a {
+    padding: 8px 8px;
+  }
+
+  .header-social {
+    gap: 4px;
+  }
+
+  .header-social a {
+    width: 32px;
+    height: 32px;
+  }
+}
+
+@media (max-width: 380px) {
+  .header-brand {
+    display: none;
   }
 }

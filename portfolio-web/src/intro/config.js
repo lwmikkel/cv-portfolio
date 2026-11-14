@@ -37,9 +37,9 @@ export const COPY = {
   placeholderMobile: 'Pick a topic or tap a logo',
 }
 
-// Where the main button of your front page sits in the 1280x800 screenshot (page pixels).
-// The robot's cursor clicks exactly there. Change it if you move the button.
-export const SITE_BUTTON = { x: 187, y: 603 }
+// Where the robot's cursor clicks in the 1280x800 screenshot (page pixels).
+// Change it if you move things on your front page.
+export const SITE_BUTTON = { x: 376, y: 199 }
 
 // Idle wandering and walking (seconds). The wandering loops forever until the visitor picks something.
 export const WALK = { lead: 1.2, move: 2.4, pause: 1.1, step: 0.6, speed: 230 }
