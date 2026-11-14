@@ -3,9 +3,10 @@ import './App.css'
 import { GuideIntro } from './intro'
 import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
+import TechBand from './components/TechBand.jsx'
 import About from './components/About.jsx'
 import Projects from './components/Projects.jsx'
-import Experience from './components/Experience.jsx'
+import Timeline from './components/Timeline.jsx'
 
 function App() {
   const [projects, setProjects] = useState([])
@@ -21,9 +22,10 @@ function App() {
       <>
       <Header />
       <Hero />
+      <TechBand />
       <About />
       <Projects projects={projects} />
-      <Experience />
+      <Timeline />
       {!entered && <GuideIntro onEnter={() => setEntered(true)} />}
       </>
 )}  
