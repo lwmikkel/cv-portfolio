@@ -235,13 +235,6 @@
   color: var(--text2);
 }
 
-.about-row:first-child .about-text {
-  font-size: 21px;
-  line-height: 1.5;
-  letter-spacing: -0.01em;
-  color: var(--text);
-}
-
 .about-text .w {
   display: inline-block;
   white-space: pre;
@@ -274,10 +267,6 @@
 
   .about-row {
     gap: 12px;
-  }
-
-  .about-row:first-child .about-text {
-    font-size: 19px;
   }
 }
 
