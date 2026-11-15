@@ -60,16 +60,19 @@
   background: #FFFFFF;
 }
 
+.hero-photo::before {
+  content: "";
+  display: block;
+  padding-top: 115%;
+}
+
 .hero-photo img {
   position: absolute;
-  left: 50%;
-  bottom: 0;
-  width: auto;
-  max-width: none;
+  inset: 0;
+  width: 100%;
   height: 100%;
-  transform: translateX(-50%);
-  -webkit-mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
-  mask-image: linear-gradient(90deg, transparent, #000 14%, #000 86%, transparent);
+  object-fit: cover;
+  object-position: 50% 30%;
 }
 
 .hero-photo-caption {

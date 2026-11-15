@@ -1,8 +1,10 @@
 .about {
+  display: flex;
   margin: 0;
 }
 
 .about-me {
+  flex: 1;
   padding: 30px 36px 34px;
   gap: 0;
 }

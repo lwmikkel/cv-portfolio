@@ -7,35 +7,35 @@
 .top {
   display: grid;
   grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
-  grid-template-rows: auto 1fr auto;
   gap: 16px;
   margin: 16px var(--gutter) 0;
 }
 
 .top > .about {
   grid-column: 1;
-  grid-row: 2 / span 2;
+  grid-row: 2;
 }
 
 .top .hero-main {
   grid-column: 1;
   grid-row: 1;
+  justify-content: center;
 }
 
 .top .hero-photo {
   grid-column: 2;
-  grid-row: 1 / span 2;
+  grid-row: 1;
 }
 
 .top > .built {
   grid-column: 2;
-  grid-row: 3;
+  grid-row: 2;
+  align-self: start;
 }
 
 @media (max-width: 900px) {
   .top {
     grid-template-columns: minmax(0, 1fr);
-    grid-template-rows: none;
   }
 
   .top > .about,
