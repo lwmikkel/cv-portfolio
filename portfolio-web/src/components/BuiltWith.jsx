@@ -1,10 +1,10 @@
 import './BuiltWith.css'
 
 const STACK = [
-    { name: 'C# · .NET', color: '#7C3AED' },
-    { name: 'React', color: '#0F766E' },
-    { name: 'SQLite', color: '#B45309' },
-    { name: 'Azure', color: '#1D4ED8' },
+    { name: 'C# · .NET', role: 'API', color: '#7C3AED' },
+    { name: 'React', role: 'Front end', color: '#0F766E' },
+    { name: 'SQLite', role: 'Database', color: '#B45309' },
+    { name: 'Azure', role: 'Hosting', color: '#1D4ED8' },
 ]
 
 function BuiltWith(){
@@ -18,7 +18,7 @@ function BuiltWith(){
             <p className="built-text">The projects further down are loaded from my own API.</p>
             <ul className="built-stack">
                 {STACK.map((item) => (
-                    <li key={item.name} style={{ '--c': item.color }}>{item.name}</li>
+                    <li key={item.name} style={{ '--c': item.color }}><strong>{item.name}</strong><span>{item.role}</span></li>
                 ))}
             </ul>
             <a className="built-link" href="https://github.com/lwmikkel/cv-portfolio" target="_blank" rel="noreferrer">See the code <span aria-hidden="true">→</span></a>

@@ -53,6 +53,10 @@
   overflow: hidden;
 }
 
+.about-me:not(.is-open) .about-ask {
+  margin-block: auto;
+}
+
 .about-botwrap {
   flex: none;
   width: 84px;

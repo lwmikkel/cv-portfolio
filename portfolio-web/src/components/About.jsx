@@ -49,6 +49,7 @@ function About(){
         const go = async () => {
             if (done) return
             done = true
+            card.classList.add('is-open')
             if (reduce) {
                 ask.style.display = 'none'
                 slot.appendChild(bot)
@@ -132,6 +133,7 @@ function About(){
             ask.style.display = ''
             btn.style.animation = ''
             reveal.classList.remove('open')
+            card.classList.remove('is-open')
         }
     }, [])
 

@@ -45,37 +45,46 @@
 
 .built-stack {
   display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 16px 24px 0;
+  flex-direction: column;
+  gap: 10px;
+  margin: 18px 24px 0;
   padding: 0;
   list-style: none;
 }
 
 .built-stack li {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  gap: 7px;
-  height: 32px;
-  padding: 0 12px;
+  gap: 12px;
+  height: 52px;
+  padding: 0 16px;
   border: 1px solid color-mix(in srgb, var(--c) 24%, #FFFFFF);
-  border-radius: 999px;
+  border-radius: 16px;
   background: color-mix(in srgb, var(--c) 10%, #FFFFFF);
-  font-size: 13px;
-  font-weight: 600;
 }
 
 .built-stack li::before {
   content: "";
-  width: 7px;
-  height: 7px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   background: var(--c);
 }
 
+.built-stack strong {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.built-stack span {
+  margin-left: auto;
+  font-size: 13px;
+  color: var(--text3);
+}
+
 .built-link {
   align-self: flex-start;
-  margin: 18px 24px 0;
+  margin: 20px 24px 0;
   color: var(--accent);
   font-size: 15px;
   font-weight: 600;
