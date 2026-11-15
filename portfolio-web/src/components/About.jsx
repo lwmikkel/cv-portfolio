@@ -65,13 +65,14 @@ function About(){
             if (!alive) return
             cls('think', false)
             const from = bot.getBoundingClientRect()
-            const height = ask.getBoundingClientRect().height
+            const zoom = card.getBoundingClientRect().width / card.offsetWidth || 1
+            const height = ask.getBoundingClientRect().height / zoom
             slot.appendChild(bot)
             const to = bot.getBoundingClientRect()
             ask.animate([{ height: height + 'px', opacity: 1 }, { height: '0px', paddingTop: '0px', paddingBottom: '0px', opacity: 0 }], { duration: 600, easing: 'cubic-bezier(.2,.8,.2,1)', fill: 'forwards' })
             reveal.classList.add('open')
-            const dx = from.left - to.left
-            const dy = from.bottom - to.bottom
+            const dx = (from.left - to.left) / zoom
+            const dy = (from.bottom - to.bottom) / zoom
             const scale = from.width / to.width
             bot.animate([
                 { transform: `translate(${dx}px,${dy}px) scale(${scale})` },

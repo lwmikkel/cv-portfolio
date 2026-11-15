@@ -20,14 +20,16 @@ function App() {
 
   return(
       <>
-      <Header />
-      <div className="top">
-        <Hero />
-        <About />
+      <div className="site">
+        <Header />
+        <div className="top">
+          <Hero />
+          <About />
+        </div>
+        <TechBand />
+        <Projects projects={projects} />
+        <Timeline />
       </div>
-      <TechBand />
-      <Projects projects={projects} />
-      <Timeline />
       {!entered && <GuideIntro onEnter={() => setEntered(true)} />}
       </>
 )}  
