@@ -16,11 +16,13 @@ function BuiltWith(){
             </div>
             <p className="built-title">I built this site myself.</p>
             <p className="built-text">The projects further down are loaded from my own API.</p>
-            <ul className="built-stack">
-                {STACK.map((item) => (
-                    <li key={item.name} style={{ '--c': item.color }}><strong>{item.name}</strong><span>{item.role}</span></li>
-                ))}
-            </ul>
+            <div className="built-reveal">
+                <ul className="built-stack">
+                    {STACK.map((item) => (
+                        <li key={item.name} style={{ '--c': item.color }}><strong>{item.name}</strong><span>{item.role}</span></li>
+                    ))}
+                </ul>
+            </div>
             <a className="built-link" href="https://github.com/lwmikkel/cv-portfolio" target="_blank" rel="noreferrer">See the code <span aria-hidden="true">→</span></a>
         </aside>
     )
