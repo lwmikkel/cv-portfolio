@@ -5,6 +5,7 @@ import Header from './components/Header.jsx'
 import Hero from './components/Hero.jsx'
 import TechBand from './components/TechBand.jsx'
 import About from './components/About.jsx'
+import BuiltWith from './components/BuiltWith.jsx'
 import Projects from './components/Projects.jsx'
 import Timeline from './components/Timeline.jsx'
 
@@ -25,6 +26,7 @@ function App() {
         <div className="top">
           <Hero />
           <About />
+          <BuiltWith />
         </div>
         <TechBand />
         <Projects projects={projects} />

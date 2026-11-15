@@ -1,0 +1,28 @@
+import './BuiltWith.css'
+
+const STACK = [
+    { name: 'C# · .NET', color: '#7C3AED' },
+    { name: 'React', color: '#0F766E' },
+    { name: 'SQLite', color: '#B45309' },
+    { name: 'Azure', color: '#1D4ED8' },
+]
+
+function BuiltWith(){
+    return(
+        <aside className="tile built">
+            <div className="built-window" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <code>this-site</code>
+            </div>
+            <p className="built-title">I built this site myself.</p>
+            <p className="built-text">The projects further down are loaded from my own API.</p>
+            <ul className="built-stack">
+                {STACK.map((item) => (
+                    <li key={item.name} style={{ '--c': item.color }}>{item.name}</li>
+                ))}
+            </ul>
+            <a className="built-link" href="https://github.com/lwmikkel/cv-portfolio" target="_blank" rel="noreferrer">See the code <span aria-hidden="true">→</span></a>
+        </aside>
+    )
+}
+export default BuiltWith
