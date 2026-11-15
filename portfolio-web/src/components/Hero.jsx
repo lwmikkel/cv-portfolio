@@ -5,7 +5,7 @@ function Hero(){
     return(
         <section className = "hero">
             <div className = "hero-main">
-                <h1>Hi, I'm Mikkel.</h1>
+                <h1>Hi, I'm Mikkel<span className="hero-dot">.</span></h1>
                 <p className="hero-lead">Software student at Aalborg University Copenhagen.</p>
                 <div className="hero-text">
                     <p>What drives me is taking an idea all the way to something you can actually use.</p>
