@@ -115,11 +115,10 @@ function About(){
             const visible = rect.top < window.innerHeight * 0.85 && rect.bottom > 0
             if (!visible || document.querySelector('[data-guide-intro]')) return
             waited += 500
-            if (waited === 1500 && !reduce) {
+            if (waited % 8000 === 1500 && !reduce) {
                 cls('hello', true)
                 later(() => cls('hello', false), 1900)
             }
-            if (waited >= 9000) go()
         }, 500)
 
         return () => {
