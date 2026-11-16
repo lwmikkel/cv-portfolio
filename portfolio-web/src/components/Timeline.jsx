@@ -44,14 +44,35 @@ const timeline = [
     logo: 'aau',
     logoText: 'AAU',
     summary: 'Software bachelor at AAU Copenhagen, now in my 3rd semester.',
-    description: 'I study Software at Aalborg University Copenhagen. The first semesters have taken me from low-level C through web development with Node.js to system design, object-oriented Java and relational databases.',
-    pointsLabel: 'What I learned',
-    points: [
-      '1st semester: C, with variables, functions, control structures, data structures and memory management',
-      '2nd semester: HTML, CSS, JavaScript, Node.js, design and user experience',
-      '3rd semester: System design (architecture and methods), Java (OOP) and SQL (PostgreSQL)',
+    description: 'I study Software at Aalborg University Copenhagen. Each semester combines courses with a group project, where we build a piece of software from problem to working program.',
+    groups: [
+      {
+        label: '1st semester · A program that solves a problem',
+        points: [
+          'Imperative Programming: programming in C, from variables and functions to data structures and memory management.',
+          'Theoretical Foundations of Computer Science: the logic and mathematics that programming builds on.',
+          'Problem-Based Learning: how to plan and carry out a project in a group.',
+        ],
+      },
+      {
+        label: '2nd semester · A larger program developed by a group',
+        points: [
+          'Algorithms and Data Structures: how to store data and solve problems efficiently.',
+          'Internetworking and Web Programming: how the web works, with HTML, CSS, JavaScript and Node.js.',
+          'Design and Evaluation of User Interfaces: designing an interface and testing it with users.',
+          'Probability Theory and Linear Algebra: probability, vectors and matrices.',
+        ],
+      },
+      {
+        label: '3rd semester · A well-structured application (in progress)',
+        points: [
+          'Object-Oriented Programming: classes, objects and inheritance in Java.',
+          'System Development: analysing and designing a system before it is built.',
+          'Databases and Software Architecture: SQL with PostgreSQL and how to structure a larger system.',
+        ],
+      },
     ],
-    skills: ['C', 'Java', 'JavaScript', 'Node.js', 'SQL', 'PostgreSQL', 'System design'],
+    skills: ['Imperative Programming', 'Algorithms and Data Structures', 'Web Programming', 'Object-Oriented Programming'],
   },
   {
     id: 3,
@@ -203,22 +224,26 @@ function Timeline() {
           </div>
 
           <div className="modal-side" style={{ '--c': types[selected.type].color }}>
-            <div className="modal-section">
-              <div className="label">{selected.pointsLabel}</div>
-              <ul>
-                {selected.points.map(point => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </div>
-            <div className="modal-section">
-              <div className="label">Skills</div>
-              <div className="modal-chips">
-                {selected.skills.map(skill => (
-                  <span className="chip" key={skill}>{skill}</span>
-                ))}
+            {(selected.groups ?? [{ label: selected.pointsLabel, points: selected.points }]).map(group => (
+              <div className="modal-section" key={group.label}>
+                <div className="label">{group.label}</div>
+                <ul>
+                  {group.points.map(point => (
+                    <li key={point}>{point}</li>
+                  ))}
+                </ul>
               </div>
-            </div>
+            ))}
+            {!selected.groups && (
+              <div className="modal-section">
+                <div className="label">Skills</div>
+                <div className="modal-chips">
+                  {selected.skills.map(skill => (
+                    <span className="chip" key={skill}>{skill}</span>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </Modal>
       )}
