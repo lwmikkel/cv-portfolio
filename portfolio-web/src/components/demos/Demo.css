@@ -1050,10 +1050,8 @@
 }
 
 .ml-body {
-  min-height: 330px;
   gap: 26px;
   padding: 28px 24px;
-  justify-content: center;
 }
 
 .ml-body .btn-pill {
@@ -1107,5 +1105,31 @@
 
   .ml-accuracy-head strong {
     font-size: 48px;
+  }
+}
+
+.project-demo .demo {
+  height: 400px;
+}
+
+.project-demo .demo > .ev-body,
+.project-demo .demo > .inv2,
+.project-demo .demo > .ml-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+.project-demo .demo > .ml-body {
+  justify-content: flex-start;
+}
+
+.project-demo .demo > .ev-center {
+  justify-content: center;
+}
+
+@media (max-width: 760px) {
+  .project-demo .demo {
+    height: 480px;
   }
 }
