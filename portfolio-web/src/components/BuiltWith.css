@@ -48,9 +48,10 @@
   height: 32px;
   margin-top: 10px;
   padding: 0 12px;
-  border: 1px solid color-mix(in srgb, var(--c) 24%, #FFFFFF);
+  border: 1px solid #2E364A;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--c) 10%, #FFFFFF);
+  background: linear-gradient(135deg, #171B29, #232A3F);
+  color: #FFFFFF;
   font-size: 13px;
   font-weight: 600;
 }
@@ -102,9 +103,10 @@
   gap: 12px;
   height: 52px;
   padding: 0 16px;
-  border: 1px solid color-mix(in srgb, var(--c) 24%, #FFFFFF);
+  border: 1px solid #2E364A;
   border-radius: 16px;
-  background: color-mix(in srgb, var(--c) 10%, #FFFFFF);
+  background: linear-gradient(135deg, #171B29, #232A3F);
+  color: #FFFFFF;
 }
 
 .built-stack li::before {
@@ -123,7 +125,7 @@
 .built-stack span {
   margin-left: auto;
   font-size: 13px;
-  color: var(--text3);
+  color: #A5AEC4;
 }
 
 .built-link {

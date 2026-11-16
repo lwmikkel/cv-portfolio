@@ -9,12 +9,12 @@ const ROWS = [
         text: 'I am Mikkel, 22 years old, and I live in Rødovre. I am in my third semester of software at Aalborg University in Copenhagen.',
     },
     {
-        color: '#7C3AED',
+        color: '#0F766E',
         icon: <><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9z" /><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z" /></>,
         text: 'I spend most of my free time on my own projects. I am especially interested in how AI can take over tasks that people do by hand today.',
     },
     {
-        color: '#B45309',
+        color: '#0F766E',
         icon: <><path d="M4 14v-2a8 8 0 0116 0v2" /><rect x="2.5" y="13" width="4" height="6" rx="1.5" /><rect x="17.5" y="13" width="4" height="6" rx="1.5" /><path d="M20 19c0 1.7-2 2.5-5 2.5" /></>,
         text: 'Alongside my studies I work at the Coop service desk. Store staff call when something has stopped working and they are in a hurry, so I have learned to stay calm and explain the solution in plain language.',
     },

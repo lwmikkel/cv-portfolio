@@ -12,6 +12,7 @@
   line-height: 1;
   font-weight: 800;
   letter-spacing: -0.045em;
+  color: #FFFFFF;
 }
 
 .projects-layout {
@@ -72,10 +73,10 @@
 .project-close {
   flex-shrink: 0;
   padding: 6px 10px;
-  border: 1px solid color-mix(in srgb, var(--c) 28%, var(--border));
+  border: 1px solid #3A4460;
   border-radius: 8px;
-  background: var(--bg);
-  color: var(--c);
+  background: #2A3247;
+  color: #C9D1E6;
   font: inherit;
   font-size: 13px;
   cursor: pointer;
@@ -101,9 +102,11 @@
   flex-direction: column;
   gap: 18px;
   padding: 36px;
-  background: color-mix(in srgb, var(--c) 7%, var(--card));
-  border: 1px solid color-mix(in srgb, var(--c) 28%, var(--border));
+  background: linear-gradient(135deg, #171B29, #232A3F);
+  border: 1px solid #2E364A;
   border-radius: var(--radius);
+  box-shadow: 0 24px 50px -24px rgba(15, 20, 40, 0.55);
+  color: #E6E9F2;
 }
 
 .project-detail-head {
@@ -126,10 +129,10 @@
   width: fit-content;
   margin-left: auto;
   padding: 6px 10px;
-  border: 1px solid color-mix(in srgb, var(--c) 28%, var(--border));
+  border: 1px solid #3A4460;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--c) 5%, var(--bg));
-  color: var(--c);
+  background: #2A3247;
+  color: #C9D1E6;
   font-size: 12px;
   font-weight: 600;
   list-style: none;
@@ -181,14 +184,14 @@
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--c);
+  color: #8FB4FF;
 }
 
 .project-detail-top p {
   margin: 0;
   font-size: 16px;
   line-height: 1.6;
-  color: var(--text2);
+  color: #B9C0D2;
 }
 
 .project-detail-top ul {
@@ -205,7 +208,7 @@
   padding-left: 18px;
   font-size: 15px;
   line-height: 1.5;
-  color: var(--text2);
+  color: #B9C0D2;
 }
 
 .project-detail-top li::before {
@@ -215,7 +218,7 @@
   top: 10px;
   width: 8px;
   height: 2px;
-  background: var(--c);
+  background: #8FB4FF;
 }
 
 .project-detail-foot {

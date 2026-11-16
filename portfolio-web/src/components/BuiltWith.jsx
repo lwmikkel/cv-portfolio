@@ -1,10 +1,10 @@
 import './BuiltWith.css'
 
 const STACK = [
-    { name: 'C# · .NET', role: 'API', color: '#7C3AED' },
-    { name: 'React', role: 'Front end', color: '#0F766E' },
-    { name: 'SQLite', role: 'Database', color: '#B45309' },
-    { name: 'Azure', role: 'Hosting', color: '#1D4ED8' },
+    { name: 'C# · .NET', role: 'API', color: '#8FA8FF' },
+    { name: 'React', role: 'Front end', color: '#7FB2E5' },
+    { name: 'SQLite', role: 'Database', color: '#6CC4D8' },
+    { name: 'Azure', role: 'Hosting', color: '#A9C4FF' },
 ]
 
 function BuiltWith(){
