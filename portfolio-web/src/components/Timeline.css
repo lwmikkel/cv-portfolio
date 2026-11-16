@@ -228,3 +228,167 @@
     font-size: 24px;
   }
 }
+
+.semesters {
+  flex: 1 1 100%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.semester-track {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.modal .semester-track li {
+  display: grid;
+  place-items: center;
+  flex: none;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 2px solid var(--border-strong);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--text3);
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.modal .semester-track li::before {
+  display: none;
+}
+
+.modal .semester-track li:not(:first-child) {
+  margin-left: 40px;
+}
+
+.modal .semester-track li:not(:first-child)::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: -42px;
+  right: auto;
+  width: 40px;
+  height: 2px;
+  border-radius: 0;
+  background: var(--border-strong);
+}
+
+.modal .semester-track li.done,
+.modal .semester-track li.current {
+  border-color: var(--accent);
+}
+
+.modal .semester-track li.done {
+  background: var(--accent);
+  color: #FFFFFF;
+}
+
+.modal .semester-track li.current {
+  color: var(--accent);
+  box-shadow: 0 0 0 5px color-mix(in srgb, var(--accent) 16%, transparent);
+}
+
+.modal .semester-track li.done::before,
+.modal .semester-track li.current::before {
+  background: var(--accent);
+}
+
+.semester-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.semester {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 18px;
+  border: 1px solid color-mix(in srgb, var(--c) 22%, #FFFFFF);
+  border-radius: 18px;
+  background: color-mix(in srgb, var(--c) 6%, #FFFFFF);
+}
+
+.semester header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.semester-number {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 11px;
+  background: var(--c);
+  color: #FFFFFF;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.semester h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.semester-status {
+  margin-left: auto;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--c) 14%, #FFFFFF);
+  color: var(--c);
+  font-size: 11.5px;
+  font-weight: 700;
+}
+
+.modal .semester ul {
+  gap: 12px;
+}
+
+.modal .semester li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-left: 0;
+}
+
+.modal .semester li::before {
+  display: none;
+}
+
+.semester strong {
+  font-size: 14.5px;
+  line-height: 1.35;
+  color: var(--text);
+}
+
+.semester li span {
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--text2);
+}
+
+@media (max-width: 800px) {
+  .semester-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .modal .semester-track li:not(:first-child) {
+    margin-left: 18px;
+  }
+
+  .modal .semester-track li:not(:first-child)::before {
+    left: -20px;
+    width: 18px;
+  }
+}

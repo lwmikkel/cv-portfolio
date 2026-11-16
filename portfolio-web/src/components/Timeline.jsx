@@ -45,30 +45,36 @@ const timeline = [
     logoText: 'AAU',
     summary: 'Software bachelor at AAU Copenhagen, now in my 3rd semester.',
     description: 'I study Software at Aalborg University Copenhagen. Each semester combines courses with a group project, where we build a piece of software from problem to working program.',
-    groups: [
+    semesters: [
       {
-        label: '1st semester · A program that solves a problem',
-        points: [
-          'Imperative Programming: programming in C, from variables and functions to data structures and memory management.',
-          'Theoretical Foundations of Computer Science: the logic and mathematics that programming builds on.',
-          'Problem-Based Learning: how to plan and carry out a project in a group.',
+        number: 1,
+        status: 'Completed',
+        color: '#0F766E',
+        courses: [
+          { name: 'Imperative Programming', text: 'Programming in C, from variables and functions to data structures and memory management.' },
+          { name: 'Theoretical Foundations of Computer Science', text: 'The logic and mathematics that programming builds on.' },
+          { name: 'Problem-Based Learning', text: 'How to plan and carry out a project in a group.' },
         ],
       },
       {
-        label: '2nd semester · A larger program developed by a group',
-        points: [
-          'Algorithms and Data Structures: how to store data and solve problems efficiently.',
-          'Internetworking and Web Programming: how the web works, with HTML, CSS, JavaScript and Node.js.',
-          'Design and Evaluation of User Interfaces: designing an interface and testing it with users.',
-          'Probability Theory and Linear Algebra: probability, vectors and matrices.',
+        number: 2,
+        status: 'Completed',
+        color: '#7C3AED',
+        courses: [
+          { name: 'Algorithms and Data Structures', text: 'How to store data and solve problems efficiently.' },
+          { name: 'Internetworking and Web Programming', text: 'How the web works, with HTML, CSS, JavaScript and Node.js.' },
+          { name: 'Design and Evaluation of User Interfaces', text: 'Designing an interface and testing it with users.' },
+          { name: 'Probability Theory and Linear Algebra', text: 'Probability, vectors and matrices.' },
         ],
       },
       {
-        label: '3rd semester · A well-structured application (in progress)',
-        points: [
-          'Object-Oriented Programming: classes, objects and inheritance in Java.',
-          'System Development: analysing and designing a system before it is built.',
-          'Databases and Software Architecture: SQL with PostgreSQL and how to structure a larger system.',
+        number: 3,
+        status: 'In progress',
+        color: '#B45309',
+        courses: [
+          { name: 'Object-Oriented Programming', text: 'Classes, objects and inheritance in Java.' },
+          { name: 'System Development', text: 'Analysing and designing a system before it is built.' },
+          { name: 'Databases and Software Architecture', text: 'SQL with PostgreSQL and how to structure a larger system.' },
         ],
       },
     ],
@@ -223,18 +229,43 @@ function Timeline() {
             <p>{selected.description}</p>
           </div>
 
-          <div className="modal-side" style={{ '--c': types[selected.type].color }}>
-            {(selected.groups ?? [{ label: selected.pointsLabel, points: selected.points }]).map(group => (
-              <div className="modal-section" key={group.label}>
-                <div className="label">{group.label}</div>
+          {selected.semesters ? (
+            <div className="semesters">
+              <ol className="semester-track" aria-label="Semester 3 of 6">
+                {[1, 2, 3, 4, 5, 6].map(step => (
+                  <li key={step} className={step < 3 ? 'done' : step === 3 ? 'current' : ''}>{step}</li>
+                ))}
+              </ol>
+              <div className="semester-grid">
+                {selected.semesters.map(semester => (
+                  <section className="semester" key={semester.number} style={{ '--c': semester.color }}>
+                    <header>
+                      <span className="semester-number">{semester.number}</span>
+                      <h4>Semester {semester.number}</h4>
+                      <span className="semester-status">{semester.status}</span>
+                    </header>
+                    <ul>
+                      {semester.courses.map(course => (
+                        <li key={course.name}>
+                          <strong>{course.name}</strong>
+                          <span>{course.text}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                ))}
+              </div>
+            </div>
+          ) : (
+            <div className="modal-side" style={{ '--c': types[selected.type].color }}>
+              <div className="modal-section">
+                <div className="label">{selected.pointsLabel}</div>
                 <ul>
-                  {group.points.map(point => (
+                  {selected.points.map(point => (
                     <li key={point}>{point}</li>
                   ))}
                 </ul>
               </div>
-            ))}
-            {!selected.groups && (
               <div className="modal-section">
                 <div className="label">Skills</div>
                 <div className="modal-chips">
@@ -243,8 +274,8 @@ function Timeline() {
                   ))}
                 </div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
         </Modal>
       )}
     </section>
