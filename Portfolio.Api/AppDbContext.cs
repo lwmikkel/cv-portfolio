@@ -13,33 +13,30 @@ public class AppDbContext: DbContext
         modelBuilder.Entity<Project>().HasData( 
             new Project (
                 1,
-                "Machine learning project quote 2",
-                "Estimates the probability for a League of legends team to win",
+                "League of Legends win predictor",
+                "Estimates the probability that a League of Legends team wins a match. I built it to learn more about the logic behind AI, and to combine that with one of my interests.",
                 "....",
-                "Machine learning",
+                "Private project",
                 "Python, Pandas",
-                "...."
-                
-
+                "Written in Python. | Pandas handles the match data the model learns from. | The model rates every team and predicts each match before it sees the result."
                 ),
             new Project(
                 2,
-                "Ai invoice reader",
-                "Reads invoices, calculates tax and output them in excel file with color on which is wrong and right",
+                "AI invoice reader",
+                "Reads invoices and writes the result to an Excel file, where colours show which invoices are correct and which have errors. I built it to try automating a real process with AI and to learn more about it.",
                 "....",
-                "AI project",
-                "Claude API, Excel",
-                "Extracts supplier, number, amounts and VAT from an invoice. | Checks that the VAT and the total add up. | Writes the result to an Excel report with colours for OK and errors."
-    
+                "Private project",
+                "Python, Claude API, Excel",
+                "Written in Python. | The Claude API extracts supplier, invoice number, amounts and VAT from each invoice. | The code checks that VAT and total add up before it writes the Excel report."
                 ),
             new Project(
                 3,
-                "Event platform Aalborg university ",
-                "Platform for Aalborg university for events. Fullstack web application",
+                "Event platform, Aalborg University",
+                "A platform where students can find and sign up for events at the university. We built it to make events easier to find, especially for new students, because we felt there was no good overview.",
                 "...",
                 "2nd semester project",
                 "Node.js, Express, MongoDB",
-                "Event listing and sign-up for students.| A server in Node.js and Express with the data stored in MongoDB."
+                "A full-stack web application. | The server is written in Node.js and Express. | The data is stored in MongoDB."
             )
         );
     }
