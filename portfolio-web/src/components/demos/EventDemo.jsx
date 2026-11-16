@@ -17,6 +17,12 @@ const startEvents = [
   { id: 4, title: 'Amped night', when: 'Sat 21:00', place: 'Campus', image: amped, capacity: 80, going: 35, attendees: [] },
 ]
 
+const startGroups = [
+  { id: 1, name: 'Algorithms study group', topic: 'Weekly problem solving', members: 14 },
+  { id: 2, name: 'Board game club', topic: 'Fridays in the student bar', members: 22 },
+  { id: 3, name: 'Kayak club', topic: 'Harbour trips in the summer', members: 31 },
+]
+
 const newEvents = [
   { title: 'Board game night', image: movie },
   { title: 'Career talk', image: step },
@@ -28,6 +34,8 @@ function EventDemo() {
   const [events, setEvents] = useState(startEvents)
   const [account, setAccount] = useState(null)
   const [created, setCreated] = useState(0)
+  const [view, setView] = useState('events')
+  const [groups, setGroups] = useState(startGroups.map(group => ({ ...group, joined: false })))
 
   const organizer = account?.role === 'organizer'
 
@@ -40,33 +48,41 @@ function EventDemo() {
     )))
   }
 
+  function toggleGroup(id) {
+    setGroups(list => list.map(group => (
+      group.id === id ? { ...group, joined: !group.joined, members: group.members + (group.joined ? -1 : 1) } : group
+    )))
+  }
+
   function removeEvent(id) {
     setEvents(list => list.filter(event => event.id !== id))
   }
 
   function newEvent() {
     const next = newEvents[created % newEvents.length]
-    setEvents(list => [...list, { id: Date.now(), title: next.title, when: 'Next week', place: 'Campus', image: next.image, capacity: 30, going: 0, attendees: [] }])
+    setEvents(list => [...list, { id: Date.now(), mine: true, title: next.title, when: 'Next week', place: 'Campus', image: next.image, capacity: 30, going: 0, attendees: [] }])
     setCreated(value => value + 1)
   }
+
+  const current = !account && view === 'mine' ? 'events' : view
 
   const header = (
     <div className="ev-top">
       <span className="ev-brand">AAU CPH <b>Events</b></span>
       <nav className="ev-nav" aria-label="Demo menu">
-        <span className="on">Events</span>
-        {account && !organizer && <span>My events</span>}
-        <span>Groups</span>
+        <button type="button" className={current === 'events' ? 'on' : ''} onClick={() => setView('events')}>Events</button>
+        {account && <button type="button" className={current === 'mine' ? 'on' : ''} onClick={() => setView('mine')}>My events</button>}
+        <button type="button" className={current === 'groups' ? 'on' : ''} onClick={() => setView('groups')}>Groups</button>
       </nav>
       {account ? (
-        <button type="button" className="ev-login" onClick={() => setAccount(null)}>Log out</button>
+        <button type="button" className="ev-login" onClick={() => { setAccount(null); setView('events') }}>Log out</button>
       ) : (
         <span className="ev-login ev-login-idle">Log in</span>
       )}
     </div>
   )
 
-  if (!account) {
+  if (!account && current !== 'groups') {
     return (
       <div className="demo ev">
         {header}
@@ -84,41 +100,78 @@ function EventDemo() {
     )
   }
 
+  const joinedEvents = events.filter(event => (organizer ? event.mine : event.attendees.includes(account?.email)))
+
+  function card(event) {
+    const going = event.going + event.attendees.length
+    const joined = account && event.attendees.includes(account.email)
+    const full = going >= event.capacity
+    return (
+      <li className="ev-card" key={event.id}>
+        <img src={event.image} alt="" width="480" height="360" />
+        <p className="ev-title">{event.title}</p>
+        <p className="ev-meta">{event.when} · {event.place}</p>
+        <div className="ev-seats">
+          <span className="ev-meter"><i style={{ width: `${Math.min(100, (going / event.capacity) * 100)}%` }} /></span>
+          <span>{going} / {event.capacity}</span>
+        </div>
+        {organizer ? (
+          <button type="button" className="ev-btn ev-btn-ghost" onClick={() => removeEvent(event.id)}>Remove</button>
+        ) : (
+          <button type="button" className={`ev-btn${joined ? ' ev-btn-ghost' : ''}`} disabled={full && !joined} onClick={() => toggleSignUp(event)}>
+            {joined ? 'Cancel' : full ? 'Full' : 'Sign up'}
+          </button>
+        )}
+      </li>
+    )
+  }
+
   return (
     <div className="demo ev">
       {header}
       <div className="ev-body">
-        <div className="ev-bar">
-          <span className="ev-who">{account.email} · {account.role}</span>
-          {organizer && <button type="button" className="ev-btn ev-btn-light" onClick={newEvent}>New event</button>}
-        </div>
-
-        <ul className="ev-grid">
-          {events.map(event => {
-            const going = event.going + event.attendees.length
-            const joined = event.attendees.includes(account.email)
-            const full = going >= event.capacity
-            return (
-              <li className="ev-card" key={event.id}>
-                <img src={event.image} alt="" width="480" height="360" />
-                <p className="ev-title">{event.title}</p>
-                <p className="ev-meta">{event.when} · {event.place}</p>
-                <div className="ev-seats">
-                  <span className="ev-meter"><i style={{ width: `${Math.min(100, (going / event.capacity) * 100)}%` }} /></span>
-                  <span>{going} / {event.capacity}</span>
-                </div>
-                {organizer ? (
-                  <button type="button" className="ev-btn ev-btn-ghost" onClick={() => removeEvent(event.id)}>Remove</button>
-                ) : (
-                  <button type="button" className={`ev-btn${joined ? ' ev-btn-ghost' : ''}`} disabled={full && !joined} onClick={() => toggleSignUp(event)}>
-                    {joined ? 'Cancel' : full ? 'Full' : 'Sign up'}
-                  </button>
+        {current === 'groups' ? (
+          <>
+            <div className="ev-bar"><span className="ev-who">Study groups and clubs</span></div>
+            <ul className="ev-groups">
+              {groups.map(group => (
+                <li className="ev-group" key={group.id}>
+                  <div>
+                    <p className="ev-title">{group.name}</p>
+                    <p className="ev-meta">{group.topic} · {group.members} members</p>
+                  </div>
+                  {account ? (
+                    <button type="button" className={`ev-btn${group.joined ? ' ev-btn-ghost' : ''}`} onClick={() => toggleGroup(group.id)}>
+                      {group.joined ? 'Leave' : 'Join'}
+                    </button>
+                  ) : (
+                    <span className="ev-meta">Log in to join</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </>
+        ) : (
+          <>
+            <div className="ev-bar">
+              <span className="ev-who">{account.email} · {account.role}</span>
+              {organizer && current === 'events' && <button type="button" className="ev-btn ev-btn-light" onClick={newEvent}>New event</button>}
+            </div>
+            {current === 'mine' ? (
+              <ul className="ev-grid">
+                {joinedEvents.map(card)}
+                {joinedEvents.length === 0 && (
+                  <li className="ev-empty">{organizer ? 'You have not created any events yet. Use New event on the Events page.' : 'You have not signed up for any events yet.'}</li>
                 )}
-              </li>
-            )
-          })}
-          {events.length === 0 && <li className="event-empty">No events.</li>}
-        </ul>
+              </ul>
+            ) : (
+              <ul className="ev-grid">
+                {events.map(card)}
+                {events.length === 0 && <li className="ev-empty">No events.</li>}
+              </ul>
+            )}
+          </>
+        )}
       </div>
     </div>
   )
