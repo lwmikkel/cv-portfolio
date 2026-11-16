@@ -29,39 +29,26 @@ html {
 .header-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
-  color: var(--text);
-  text-decoration: none;
-}
-
-.header-mark {
-  display: grid;
-  place-items: center;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: #FFFFFF;
+  justify-content: center;
+  gap: 8px;
+  flex-shrink: 0;
+  min-height: 40px;
+  padding: 8px 14px;
+  border: 1px solid color-mix(in srgb, var(--accent) 35%, var(--border));
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent) 8%, var(--bg));
+  color: var(--accent);
+  font: inherit;
   font-size: 14px;
-  font-weight: 700;
-  letter-spacing: 0.02em;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
 }
 
-.header-name {
-  display: flex;
-  flex-direction: column;
-  line-height: 1.15;
-}
-
-.header-name strong {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: -0.01em;
-}
-
-.header-name span {
-  font-size: 12px;
-  color: var(--text3);
+.header-brand:hover {
+  background: color-mix(in srgb, var(--accent) 15%, var(--bg));
+  border-color: var(--accent);
 }
 
 .header-nav {
@@ -177,31 +164,48 @@ html {
 }
 
 @media (max-width: 640px) {
-  .header-name {
-    display: none;
+  html {
+    scroll-padding-top: 136px;
   }
 
   .header {
-    justify-content: flex-start;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 12px;
+    height: auto;
+    padding: 10px 12px;
+    border-radius: 24px;
+  }
+
+  .header-brand {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: start;
+    font-size: 13px;
   }
 
   .header-right {
-    margin-left: auto;
+    grid-column: 2;
+    grid-row: 1;
   }
 
   .header-social a {
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
   }
 
   .header-nav {
-    gap: 0;
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 4px;
   }
 
   .header-nav a {
-    padding: 8px 10px;
+    padding: 8px 6px;
     font-size: 13px;
+    text-align: center;
   }
 
   .nav-long {
@@ -213,23 +217,3 @@ html {
   }
 }
 
-@media (max-width: 440px) {
-  .header-nav a {
-    padding: 8px 8px;
-  }
-
-  .header-social {
-    gap: 4px;
-  }
-
-  .header-social a {
-    width: 32px;
-    height: 32px;
-  }
-}
-
-@media (max-width: 380px) {
-  .header-brand {
-    display: none;
-  }
-}

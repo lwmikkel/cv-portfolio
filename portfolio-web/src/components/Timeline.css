@@ -45,8 +45,8 @@
   color: #FFFFFF;
 }
 
-.timeline-tabs button.active .timeline-shape {
-  background: #FFFFFF;
+.timeline-tabs button.active .timeline-icon {
+  color: #FFFFFF;
 }
 
 .timeline-count {
@@ -96,34 +96,66 @@
   background: var(--bg);
 }
 
-.timeline-shape {
-  display: inline-block;
-  width: 14px;
-  height: 14px;
-  background: var(--c);
+.timeline-icon {
+  flex: none;
+  display: block;
+  width: 18px;
+  height: 18px;
+  color: var(--c);
 }
 
-.tl-work {
-  border-radius: 50%;
-}
-
-.tl-education {
-  width: 12px;
-  height: 12px;
-  border-radius: 2px;
-  transform: rotate(45deg);
-}
-
-.tl-course {
-  clip-path: polygon(25% 5%, 75% 5%, 100% 50%, 75% 95%, 25% 95%, 0 50%);
+.timeline-dot .timeline-icon {
+  width: 16px;
+  height: 16px;
 }
 
 .timeline-card {
-  gap: 12px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 110px;
+  align-items: start;
+  gap: 12px 24px;
   background: color-mix(in srgb, var(--c) 6%, var(--card));
 }
 
+.timeline-card.has-scene {
+  grid-template-columns: minmax(0, 1.1fr) minmax(260px, 1fr) 110px;
+}
+
+.timeline-copy {
+  grid-column: 1;
+  grid-row: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+}
+
+.timeline-card .career-scene {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  min-width: 0;
+  max-width: 460px;
+  justify-self: center;
+}
+
+@media (max-width: 1000px) {
+  .timeline-card.has-scene {
+    grid-template-columns: minmax(0, 1fr) 110px;
+  }
+
+  .timeline-copy {
+    grid-column: 1 / -1;
+  }
+
+  .timeline-card .career-scene {
+    grid-column: 1 / -1;
+    grid-row: 3;
+  }
+}
+
 .timeline-meta {
+  grid-column: 1;
+  grid-row: 1;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -140,8 +172,7 @@
 }
 
 .timeline-logo {
-  margin-left: auto;
-  max-width: 120px;
+  max-width: 100%;
   max-height: 48px;
   object-fit: contain;
 }
@@ -152,7 +183,6 @@
 }
 
 .timeline-logo-fallback {
-  margin-left: auto;
   padding: 6px 12px;
   border: 1px solid var(--border-strong);
   border-radius: 10px;
@@ -160,6 +190,16 @@
   color: var(--c);
   font-size: 13px;
   font-weight: 700;
+}
+
+.timeline-brand {
+  grid-column: -2 / -1;
+  grid-row: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  justify-self: end;
+  width: 110px;
 }
 
 .timeline-title {
@@ -207,6 +247,21 @@
 }
 
 @media (max-width: 600px) {
+  .timeline-card,
+  .timeline-card.has-scene {
+    grid-template-columns: minmax(0, 1fr) 84px;
+    column-gap: 16px;
+  }
+
+  .timeline-brand {
+    width: 84px;
+  }
+
+  .timeline-logo-aau,
+  .timeline-logo-noerre-gymnasium {
+    max-height: 56px;
+  }
+
   .timeline-head h2 {
     font-size: 40px;
   }

@@ -1,16 +1,18 @@
 import { kindFor } from './demos/kinds.js'
 
-function ProjectDetail({ project }) {
-  const { color, Demo } = kindFor(project)
+function ProjectDetail({ project, onClose }) {
+  const { color, Demo, codeUrl } = kindFor(project)
+  const link = codeUrl ?? project.link
   const bullets = project.bullets.split('|').map(b => b.trim()).filter(b => /[a-z]{3}/i.test(b))
-  const tech = project.tech.split(',').map(t => t.trim())
-  const hasLink = /^https?:\/\//.test(project.link)
+  const hasLink = /^https?:\/\//.test(link)
 
   return (
-    <article className="project-detail" style={{ '--c': color }}>
-      <div className="project-detail-head">
-        <span className="label">{project.kicker}</span>
-      </div>
+    <article id="project-details" className="project-detail" style={{ '--c': color }}>
+      {onClose && (
+        <div className="project-detail-head">
+          <button className="project-close" type="button" onClick={onClose} aria-label="Close project">Close ×</button>
+        </div>
+      )}
 
       <h3>{project.name.trim()}</h3>
 
@@ -31,20 +33,23 @@ function ProjectDetail({ project }) {
 
       {Demo && (
         <div className="project-demo">
-          <div className="project-demo-head">
-            <span className="project-live">Live demo</span>
-            <span>Try it yourself</span>
-          </div>
+          <details className="project-demo-info">
+            <summary className="project-demo-toggle">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 11v6m0-10v.01" />
+              </svg>
+              Demo only
+            </summary>
+            <p className="project-demo-note">This is an interactive demo, not the actual product.</p>
+          </details>
           <Demo />
         </div>
       )}
 
       <div className="project-detail-foot">
-        <div className="project-chips">
-          {tech.map(t => <span className="chip" key={t}>{t}</span>)}
-        </div>
         {hasLink && (
-          <a className="project-link" href={project.link} target="_blank" rel="noreferrer">See the code</a>
+          <a className="project-link" href={link} target="_blank" rel="noreferrer">See the code</a>
         )}
       </div>
     </article>

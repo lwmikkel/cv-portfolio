@@ -29,6 +29,7 @@
 }
 
 .project-pick {
+  position: relative;
   flex: 1 1 0;
   min-height: 120px;
   display: flex;
@@ -64,6 +65,22 @@
   color: var(--text3);
 }
 
+.project-pick-toggle {
+  display: none;
+}
+
+.project-close {
+  flex-shrink: 0;
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--c) 28%, var(--border));
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--c);
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
 .project-pick:hover {
   border-color: color-mix(in srgb, var(--c) 40%, var(--border));
 }
@@ -92,12 +109,8 @@
 .project-detail-head {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px;
-}
-
-.project-detail-head .label {
-  color: var(--c);
 }
 
 .project-demo {
@@ -106,21 +119,41 @@
   gap: 10px;
 }
 
-.project-demo-head {
+.project-demo-toggle {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 13px;
-  color: var(--text3);
-}
-
-.project-live {
-  padding: 4px 10px;
+  gap: 6px;
+  width: fit-content;
+  margin-left: auto;
+  padding: 6px 10px;
+  border: 1px solid color-mix(in srgb, var(--c) 28%, var(--border));
   border-radius: 999px;
-  background: var(--c);
-  color: #FFFFFF;
+  background: color-mix(in srgb, var(--c) 5%, var(--bg));
+  color: var(--c);
   font-size: 12px;
   font-weight: 600;
+  list-style: none;
+  cursor: pointer;
+}
+
+.project-demo-toggle::-webkit-details-marker {
+  display: none;
+}
+
+.project-demo-toggle:focus-visible {
+  outline: 2px solid var(--c);
+  outline-offset: 3px;
+}
+
+.project-demo-note {
+  margin: 8px 0 0;
+  padding: 10px 12px;
+  border: 1px solid color-mix(in srgb, var(--c) 20%, var(--border));
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text2);
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .project-detail h3 {
@@ -190,14 +223,8 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px;
-}
-
-.project-chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
 }
 
 .project-link {
@@ -233,6 +260,20 @@
 }
 
 @media (max-width: 600px) {
+  .project-pick {
+    padding-right: 52px;
+  }
+
+  .project-pick-toggle {
+    display: block;
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    color: var(--c);
+    font-size: 24px;
+    line-height: 1;
+  }
+
   .projects-head,
   .projects-layout {
     margin-left: 16px;

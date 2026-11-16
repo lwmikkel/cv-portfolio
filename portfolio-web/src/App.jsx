@@ -13,6 +13,11 @@ function App() {
   const [projects, setProjects] = useState([])
   const [entered, setEntered] = useState(false)
 
+  function returnToHome() {
+    setEntered(false)
+    window.scrollTo({ top: 0, behavior: 'instant' })
+  }
+
   useEffect(() => {
     fetch(`${import.meta.env.VITE_API_URL}/projects`)
     .then(response => response.json())
@@ -21,8 +26,8 @@ function App() {
 
   return(
       <>
-      <div className="site">
-        <Header />
+      <div className="site" inert={!entered}>
+        <Header onHome={returnToHome} />
         <div className="top">
           <Hero />
           <About />

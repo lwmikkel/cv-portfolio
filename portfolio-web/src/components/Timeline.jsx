@@ -1,5 +1,6 @@
 import { useState } from "react"
 import Modal from "./Modal.jsx"
+import CareerScene from "../career/CareerScene.jsx"
 import "./Timeline.css"
 
 const logoFiles = import.meta.glob('../assets/logos/*.{png,webp,svg,jpg}', { eager: true, import: 'default' })
@@ -22,6 +23,7 @@ const timeline = [
     type: 'work',
     period: 'June 2026 – Present',
     title: 'IT Supporter',
+    scene: 'support',
     org: 'Coop, Headquarters',
     logo: 'coop',
     logoText: 'Coop',
@@ -40,6 +42,7 @@ const timeline = [
     type: 'education',
     period: '2025 – 2028 · 3rd semester',
     title: 'Bachelor in Software',
+    scene: 'coding',
     org: 'Aalborg University',
     logo: 'aau',
     logoText: 'AAU',
@@ -85,6 +88,7 @@ const timeline = [
     type: 'work',
     period: 'March 2025 – September 2025',
     title: 'Baggage Handler',
+    scene: 'baggage',
     org: 'SAS, Copenhagen Airport',
     logo: 'sas',
     logoText: 'SAS',
@@ -123,6 +127,7 @@ const timeline = [
     type: 'work',
     period: 'January 2024 – April 2024',
     title: 'Flagman',
+    scene: 'flagman',
     org: 'Storch, Novo Nordisk Bagsværd',
     logo: 'storch',
     logoText: 'Storch',
@@ -141,6 +146,7 @@ const timeline = [
     type: 'education',
     period: '2020 – 2023',
     title: 'Upper Secondary School',
+    scene: 'classroom',
     org: 'Nørre Gymnasium (STX)',
     logo: 'noerre-gymnasium',
     logoText: 'NG',
@@ -165,6 +171,30 @@ function Logo({ item }) {
   return <span className="timeline-logo-fallback">{item.logoText}</span>
 }
 
+function TimelineIcon({ type }) {
+  return (
+    <svg className="timeline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true" focusable="false">
+      {type === 'work' ? (
+        <>
+          <rect x="3" y="7" width="18" height="14" rx="2" />
+          <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12a23 23 0 0 0 18 0M12 11v4" />
+        </>
+      ) : type === 'education' ? (
+        <>
+          <path d="M12 5v16M12 5C9 3 6 3 2 4v15c4-1 7-1 10 2 3-3 6-3 10-2V4c-4-1-7-1-10 1Z" />
+          <path d="M5 8h3M5 12h3M16 8h3M16 12h3" />
+        </>
+      ) : (
+        <>
+          <rect x="3" y="3" width="18" height="14" rx="2" />
+          <path d="M7 7h10M7 10h4M9 17l-1 5 4-2 4 2-1-5" />
+          <circle cx="12" cy="15" r="3" />
+        </>
+      )}
+    </svg>
+  )
+}
+
 function Timeline() {
   const [selected, setSelected] = useState(null)
   const [tab, setTab] = useState('work')
@@ -187,7 +217,7 @@ function Timeline() {
             style={{ '--c': type.color }}
             onClick={() => setTab(key)}
           >
-            <span className={`timeline-shape tl-${key}`} />
+            <TimelineIcon type={key} />
             {type.label}
             <span className="timeline-count">{timeline.filter(item => item.type === key).length}</span>
           </button>
@@ -198,23 +228,28 @@ function Timeline() {
         {visible.map(item => (
           <li className="timeline-item" key={item.id}>
             <span className="timeline-dot">
-              <span className={`timeline-shape tl-${item.type}`} />
+              <TimelineIcon type={item.type} />
             </span>
-            <div className="tile timeline-card">
+            <div className={`tile timeline-card${item.scene ? ' has-scene' : ''}`}>
               <div className="timeline-meta">
                 <span className="timeline-badge">{types[item.type].label}</span>
                 <span className="label">{item.period}</span>
+              </div>
+              <div className="timeline-brand">
                 <Logo item={item} />
               </div>
-              <div className="timeline-title">{item.title}</div>
-              <div className="timeline-org">{item.org}</div>
-              <p>{item.summary}</p>
-              <div className="timeline-chips">
-                {item.skills.slice(0, 4).map(skill => (
-                  <span className="chip" key={skill}>{skill}</span>
-                ))}
+              <div className="timeline-copy">
+                <div className="timeline-title">{item.title}</div>
+                <div className="timeline-org">{item.org}</div>
+                <p>{item.summary}</p>
+                <div className="timeline-chips">
+                  {item.skills.slice(0, 4).map(skill => (
+                    <span className="chip" key={skill}>{skill}</span>
+                  ))}
+                </div>
+                <button onClick={() => setSelected(item)}>Read more →</button>
               </div>
-              <button onClick={() => setSelected(item)}>Read more →</button>
+              {item.scene && <CareerScene variant={item.scene} />}
             </div>
           </li>
         ))}

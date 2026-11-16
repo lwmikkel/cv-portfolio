@@ -53,32 +53,32 @@ namespace Portfolio.Api.Migrations
                         new
                         {
                             Id = 1,
-                            Bullets = "....",
-                            Description = "Estimates the probability for a League of legends team to win",
-                            Kicker = "Machine learning",
-                            Link = "....",
-                            Name = "Machine learning project quote 2",
-                            Tech = "Python, Pandas"
+                            Bullets = "Written in Python with Pandas and scikit-learn, using 2,079 professional matches from 2026. | Every team gets an Elo rating that is updated after each match. | A logistic regression turns the rating difference into a win probability. | Team strength predicted the winner in about 60% of the matches. The champions picked in the draft added almost nothing.",
+                            Description = "Can you predict who wins a professional League of Legends match? I built this to learn more about the logic behind AI, and to combine that with one of my interests.",
+                            Kicker = "Private project",
+                            Link = "https://github.com/lwmikkel/cv-portfolio/tree/main/projects/league-draft-ml",
+                            Name = "League of Legends win predictor",
+                            Tech = "Python, Pandas, scikit-learn"
                         },
                         new
                         {
                             Id = 2,
-                            Bullets = "Extracts supplier, number, amounts and VAT from an invoice. | Checks that the VAT and the total add up. | Writes the result to an Excel report with colours for OK and errors.",
-                            Description = "Reads invoices, calculates tax and output them in excel file with color on which is wrong and right",
-                            Kicker = "AI project",
-                            Link = "....",
-                            Name = "Ai invoice reader",
-                            Tech = "Claude API, Excel"
+                            Bullets = "Written in Python. The text is read from each PDF with pdfplumber. | The Claude API finds supplier, invoice number, date, subtotal, VAT and total. | The code checks that VAT is 25% of the subtotal and that the total adds up. | The Excel report marks each invoice green, red or yellow, and the files are sorted into folders for approved, errors and missing information.",
+                            Description = "Reads PDF invoices, checks the numbers and collects everything in an Excel report. I built it to try automating a real process with AI and to learn more about it.",
+                            Kicker = "Private project",
+                            Link = "https://github.com/lwmikkel/cv-portfolio/tree/main/projects/invoice-reader",
+                            Name = "AI invoice reader",
+                            Tech = "Python, Claude API, pdfplumber, Excel"
                         },
                         new
                         {
                             Id = 3,
-                            Bullets = "Event listing and sign-up for students.| A server in Node.js and Express with the data stored in MongoDB.",
-                            Description = "Platform for Aalborg university for events. Fullstack web application",
+                            Bullets = "A full-stack web application with a Node.js and Express server and a MongoDB database. | Two roles: students find, save and sign up for events, and organizers create, edit and publish them. | Login with hashed passwords and JSON Web Tokens, and the routes are protected by role. | The front end is written in plain HTML, CSS and JavaScript.",
+                            Description = "A platform where students can find and sign up for events at the university. We built it to make events easier to find, especially for new students, because we felt there was no good overview.",
                             Kicker = "2nd semester project",
                             Link = "...",
-                            Name = "Event platform Aalborg university ",
-                            Tech = "Node.js, Express, MongoDB"
+                            Name = "Event platform, Aalborg University",
+                            Tech = "Node.js, Express, MongoDB, JWT"
                         });
                 });
 #pragma warning restore 612, 618

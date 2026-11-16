@@ -1,0 +1,66 @@
+.career-scene {
+  position: relative;
+  width: 100%;
+  height: 280px;
+  align-self: center;
+  pointer-events: none;
+  contain: layout paint;
+}
+
+.career-scene canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 400ms ease;
+  outline: none;
+}
+
+.career-scene.is-ready canvas {
+  opacity: 1;
+}
+
+.career-fallback { display: block; width: 100%; height: 100%; animation-play-state: paused; }
+.career-scene.is-active .career-fallback { animation-play-state: running; }
+.career-fallback * { animation-play-state: inherit !important; }
+.cf-bot { animation: cf-breathe 3.8s ease-in-out infinite; }
+.cf-head { animation: cf-nod 4.2s ease-in-out infinite; transform-origin: 60px 76px; }
+.cf-eyes { animation: cf-blink 4.6s linear infinite; transform-origin: 60px 46px; }
+.cf-arm-left { transform-origin: 36px 96px; }
+.cf-arm-right { transform-origin: 84px 96px; }
+.cf-call { transform: rotate(-142deg); animation: cf-call 4s ease-in-out infinite; }
+.cf-type-left { transform: rotate(26deg); animation: cf-type-left 0.65s ease-in-out infinite alternate; }
+.cf-type-right { transform: rotate(-28deg); animation: cf-type-right 0.65s ease-in-out -0.3s infinite alternate; }
+.cf-point { transform: rotate(80deg); animation: cf-point 4s ease-in-out infinite; }
+.cf-halt { transform: rotate(-85deg); }
+.cf-belt { animation: cf-belt 1s linear infinite; }
+.cf-suitcase { animation: cf-luggage 10s linear infinite; }
+.cf-hoist { animation: cf-hoist 7s ease-in-out infinite; }
+.cf-sound { animation: cf-sound 0.8s ease-in-out infinite alternate; transform-origin: center 198px; }
+.cf-code-cursor { animation: cf-cursor 1s steps(1) infinite; }
+.cf-pointer { animation: cf-pointer 4s ease-in-out infinite; transform-origin: 392px 227px; }
+@keyframes cf-breathe { 50% { transform: translateY(-2px); } }
+@keyframes cf-nod { 50% { transform: rotate(3deg); } }
+@keyframes cf-blink { 0%, 46%, 50%, 100% { transform: scaleY(1); } 48% { transform: scaleY(.12); } }
+@keyframes cf-call { 50% { transform: rotate(-149deg); } }
+@keyframes cf-type-left { to { transform: rotate(32deg); } }
+@keyframes cf-type-right { to { transform: rotate(-34deg); } }
+@keyframes cf-point { 50% { transform: rotate(87deg); } }
+@keyframes cf-belt { to { stroke-dashoffset: -21; } }
+@keyframes cf-luggage { 0% { transform: translateX(50px); opacity: 0; } 7%, 90% { opacity: 1; } 100% { transform: translateX(448px); opacity: 0; } }
+@keyframes cf-hoist { 50% { transform: translateY(-30px); } }
+@keyframes cf-sound { to { transform: scaleY(.35); } }
+@keyframes cf-cursor { 50% { opacity: 0; } }
+@keyframes cf-pointer { 50% { transform: rotate(-7deg); } }
+
+@media (max-width: 760px) {
+  .career-scene { height: 240px; max-width: 440px; margin: 0 auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .career-scene canvas { transition: none; }
+  .career-fallback * { animation: none !important; }
+  .cf-suitcase:nth-of-type(1) { transform: translateX(120px); }
+  .cf-suitcase:nth-of-type(2) { transform: translateX(250px); }
+  .cf-suitcase:nth-of-type(3) { transform: translateX(380px); }
+}

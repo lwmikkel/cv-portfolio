@@ -10,12 +10,8 @@ const STACK = [
 function BuiltWith(){
     return(
         <aside className="tile built">
-            <div className="built-window" aria-hidden="true">
-                <span></span><span></span><span></span>
-                <code>this-site</code>
-            </div>
-            <p className="built-title">I built this site myself.</p>
-            <p className="built-text">A C# API serves the projects below, and React shows them.</p>
+            <p className="built-title">Behind this site</p>
+            <p className="built-text">I wrote most of the backend myself in C# and .NET, and built the React frontend with AI assistance.</p>
             <div className="built-chips-wrap">
                 <ul className="built-chips">
                     {STACK.map((item) => (

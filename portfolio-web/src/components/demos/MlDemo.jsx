@@ -34,7 +34,7 @@ function Train() {
     setPlaying(true)
   }
 
-  let note = 'The model has not seen any matches yet.'
+  let note = null
   if (done) {
     note = 'Done. Guessing would give about 50 %.'
   } else if (last) {
@@ -48,10 +48,6 @@ function Train() {
 
   return (
     <>
-      <p className="ml-intro">
-        The model rates every team and predicts each match before it sees the result. Press the button to run it on {count.format(total)} real matches.
-      </p>
-
       <div className="ml-controls">
         <button type="button" className="btn-pill" disabled={running} onClick={start}>
           {running ? 'Training…' : done ? 'Train again' : 'Start training'}
@@ -67,7 +63,7 @@ function Train() {
         <span className="bar best">
           <i style={{ width: `${accuracy}%` }} />
         </span>
-        <p className="ml-note">{note}</p>
+        {note && <p className="ml-note">{note}</p>}
       </div>
     </>
   )
@@ -76,7 +72,7 @@ function Train() {
 function Results() {
   return (
     <div className="ml-results">
-      <p className="ml-label">Matches predicted correctly. The line is 50 %, a coin flip.</p>
+      <p className="ml-label">Prediction accuracy · marker: 50 %</p>
       {models.map(model => (
         <div className="ml-row" key={model.name}>
           <span className="ml-model"><b>{model.name}</b><small>{model.sees}</small></span>
@@ -84,9 +80,6 @@ function Results() {
           <b className="ml-value">{model.accuracy.toFixed(1)} %</b>
         </div>
       ))}
-      <p className="ml-takeaway">
-        Team strength predicts best. The draft alone is close to a coin flip, and adding it to the rating did not help.
-      </p>
       <p className="ml-fine">The rating is fitted on all {count.format(total)} matches, the draft models on an 80/20 time split.</p>
     </div>
   )
@@ -109,9 +102,6 @@ function MlDemo() {
         {tab === 'train' ? <Train /> : <Results />}
       </div>
 
-      <div className="demo-foot">
-        <span>Real data from the project: {count.format(total)} pro matches, {teams.length} teams</span>
-      </div>
     </div>
   )
 }

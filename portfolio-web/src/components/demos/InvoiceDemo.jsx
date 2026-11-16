@@ -234,20 +234,20 @@ function InvoiceDemo() {
                     <span className="flow-n">{row.mark}</span>
                     <span className="flow-title">{row.title}</span>
                     <span className="flow-sum">{row.summary}</span>
-                    <span className="flow-chev" aria-hidden="true">▾</span>
+                    <span className="flow-chev" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="m6 9 6 6 6-6" />
+                      </svg>
+                    </span>
                   </button>
                   {expanded && <div className="flow-body">{row.body}</div>}
                 </li>
               )
             })}
           </ol>
-          <p className="demo-tag">Click a step to see what it did.</p>
         </div>
       </div>
 
-      <div className="demo-foot">
-        <span>Sample invoices · the Claude step shows example output, the checks run live</span>
-      </div>
     </div>
   )
 }

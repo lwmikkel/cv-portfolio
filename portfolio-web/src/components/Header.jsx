@@ -7,7 +7,7 @@ const links = [
   { id: 'experience', label: 'Experience & Education', short: 'Experience' },
 ]
 
-function Header() {
+function Header({ onHome }) {
   const [active, setActive] = useState(null)
   const [progress, setProgress] = useState(0)
 
@@ -37,20 +37,14 @@ function Header() {
     }
   }, [])
 
-  function toTop(event) {
-    event.preventDefault()
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   return (
     <header className="header">
-      <a className="header-brand" href="#" onClick={toTop} aria-label="Back to top">
-        <span className="header-mark">MW</span>
-        <span className="header-name">
-          <strong>Mikkel Wilquin</strong>
-          <span>Software student</span>
-        </span>
-      </a>
+      <button className="header-brand" type="button" onClick={onHome} aria-label="Back to main menu" title="Back to main menu">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <path d="M19 12H5m7-7-7 7 7 7" />
+        </svg>
+        <span>Main menu</span>
+      </button>
 
       <nav className="header-nav" aria-label="Sections">
         {links.map(link => (

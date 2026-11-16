@@ -60,9 +60,6 @@ function EventDemo() {
           </div>
         </div>
 
-        <div className="demo-foot">
-          <span>Sample data</span>
-        </div>
       </div>
     )
   }
@@ -111,9 +108,6 @@ function EventDemo() {
         {events.length === 0 && <li className="event-empty">No events.</li>}
       </ul>
 
-      <div className="demo-foot">
-        <span>Sample data</span>
-      </div>
     </div>
   )
 }
