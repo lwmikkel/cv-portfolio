@@ -64,16 +64,18 @@ function EventDemo() {
     setCreated(value => value + 1)
   }
 
-  const current = !account && view === 'mine' ? 'events' : view
+  const current = account ? view : 'events'
 
   const header = (
     <div className="ev-top">
       <span className="ev-brand">AAU CPH <b>Events</b></span>
-      <nav className="ev-nav" aria-label="Demo menu">
-        <button type="button" className={current === 'events' ? 'on' : ''} onClick={() => setView('events')}>Events</button>
-        {account && <button type="button" className={current === 'mine' ? 'on' : ''} onClick={() => setView('mine')}>My events</button>}
-        <button type="button" className={current === 'groups' ? 'on' : ''} onClick={() => setView('groups')}>Groups</button>
-      </nav>
+      {account && (
+        <nav className="ev-nav" aria-label="Demo menu">
+          <button type="button" className={current === 'events' ? 'on' : ''} onClick={() => setView('events')}>Events</button>
+          <button type="button" className={current === 'mine' ? 'on' : ''} onClick={() => setView('mine')}>My events</button>
+          <button type="button" className={current === 'groups' ? 'on' : ''} onClick={() => setView('groups')}>Groups</button>
+        </nav>
+      )}
       {account ? (
         <button type="button" className="ev-login" onClick={() => { setAccount(null); setView('events') }}>Log out</button>
       ) : (
@@ -82,7 +84,7 @@ function EventDemo() {
     </div>
   )
 
-  if (!account && current !== 'groups') {
+  if (!account) {
     return (
       <div className="demo ev">
         {header}
@@ -140,13 +142,9 @@ function EventDemo() {
                     <p className="ev-title">{group.name}</p>
                     <p className="ev-meta">{group.topic} · {group.members} members</p>
                   </div>
-                  {account ? (
-                    <button type="button" className={`ev-btn${group.joined ? ' ev-btn-ghost' : ''}`} onClick={() => toggleGroup(group.id)}>
-                      {group.joined ? 'Leave' : 'Join'}
-                    </button>
-                  ) : (
-                    <span className="ev-meta">Log in to join</span>
-                  )}
+                  <button type="button" className={`ev-btn${group.joined ? ' ev-btn-ghost' : ''}`} onClick={() => toggleGroup(group.id)}>
+                    {group.joined ? 'Leave' : 'Join'}
+                  </button>
                 </li>
               ))}
             </ul>
