@@ -16,6 +16,13 @@ function BuiltWith(){
             </div>
             <p className="built-title">I built this site myself.</p>
             <p className="built-text">A C# API serves the projects below, and React shows them.</p>
+            <div className="built-chips-wrap">
+                <ul className="built-chips">
+                    {STACK.map((item) => (
+                        <li key={item.name} style={{ '--c': item.color }}>{item.name}</li>
+                    ))}
+                </ul>
+            </div>
             <div className="built-reveal">
                 <ul className="built-stack">
                     {STACK.map((item) => (
