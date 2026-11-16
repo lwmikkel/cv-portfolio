@@ -16,11 +16,17 @@ function ProjectDetail({ project }) {
       <h3>{project.name.trim()}</h3>
 
       <div className={`project-detail-top${bullets.length === 0 ? ' single' : ''}`}>
-        <p>{project.description}</p>
+        <div>
+          <h4>About the project</h4>
+          <p>{project.description}</p>
+        </div>
         {bullets.length > 0 && (
-          <ul>
-            {bullets.map(bullet => <li key={bullet}>{bullet}</li>)}
-          </ul>
+          <div>
+            <h4>Behind it</h4>
+            <ul>
+              {bullets.map(bullet => <li key={bullet}>{bullet}</li>)}
+            </ul>
+          </div>
         )}
       </div>
 
@@ -31,7 +37,7 @@ function ProjectDetail({ project }) {
           {tech.map(t => <span className="chip" key={t}>{t}</span>)}
         </div>
         {hasLink && (
-          <a className="project-link" href={project.link} target="_blank" rel="noreferrer">View on GitHub</a>
+          <a className="project-link" href={project.link} target="_blank" rel="noreferrer">See the code</a>
         )}
       </div>
     </article>

@@ -15,7 +15,7 @@ function BuiltWith(){
                 <code>this-site</code>
             </div>
             <p className="built-title">I built this site myself.</p>
-            <p className="built-text">The projects further down are loaded from my own API.</p>
+            <p className="built-text">A C# API serves the projects below, and React shows them.</p>
             <div className="built-reveal">
                 <ul className="built-stack">
                     {STACK.map((item) => (

@@ -128,6 +128,15 @@
   grid-template-columns: minmax(0, 1fr);
 }
 
+.project-detail-top h4 {
+  margin: 0 0 8px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c);
+}
+
 .project-detail-top p {
   margin: 0;
   font-size: 16px;
