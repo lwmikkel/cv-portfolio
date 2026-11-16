@@ -10,7 +10,6 @@ function ProjectDetail({ project }) {
     <article className="project-detail" style={{ '--c': color }}>
       <div className="project-detail-head">
         <span className="label">{project.kicker}</span>
-        {Demo && <span className="project-live">Live demo</span>}
       </div>
 
       <h3>{project.name.trim()}</h3>
@@ -30,7 +29,15 @@ function ProjectDetail({ project }) {
         )}
       </div>
 
-      {Demo && <Demo />}
+      {Demo && (
+        <div className="project-demo">
+          <div className="project-demo-head">
+            <span className="project-live">Live demo</span>
+            <span>Try it yourself</span>
+          </div>
+          <Demo />
+        </div>
+      )}
 
       <div className="project-detail-foot">
         <div className="project-chips">
