@@ -146,6 +146,11 @@
   object-fit: contain;
 }
 
+.timeline-logo-aau,
+.timeline-logo-noerre-gymnasium {
+  max-height: 76px;
+}
+
 .timeline-logo-fallback {
   margin-left: auto;
   padding: 6px 12px;

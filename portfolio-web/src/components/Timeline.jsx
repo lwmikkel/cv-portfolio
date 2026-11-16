@@ -132,7 +132,7 @@ function Logo({ item }) {
   const src = logos[item.logo]
 
   if (src) {
-    return <img className="timeline-logo" src={src} alt={`${item.org} logo`} />
+    return <img className={`timeline-logo timeline-logo-${item.logo}`} src={src} alt={`${item.org} logo`} />
   }
 
   return <span className="timeline-logo-fallback">{item.logoText}</span>
