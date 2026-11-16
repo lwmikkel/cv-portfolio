@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { invoices } from './invoiceSamples.js'
 import { verifyInvoice, folderFor, expectedAmounts, formatAmount, toNumber, TOLERANCE, MISSING } from './invoiceCheck.js'
+import InvoicePreview from './InvoicePreview.jsx'
 import './Demo.css'
 
 const STEP_MS = 480
@@ -51,6 +52,7 @@ function InvoiceDemo() {
   const [stage, setStage] = useState(4)
   const [open, setOpen] = useState(null)
   const [edits, setEdits] = useState({})
+  const [previewOpen, setPreviewOpen] = useState(false)
   const timers = useRef([])
 
   useEffect(() => () => timers.current.forEach(clearTimeout), [])
@@ -194,7 +196,7 @@ function InvoiceDemo() {
   ]
 
   return (
-    <div className="demo">
+    <div className="demo invoice-demo">
       <div className="demo-bar">
         <div className="demo-group">
           <span className="label">Invoice</span>
@@ -211,9 +213,20 @@ function InvoiceDemo() {
 
       <div className="inv2">
         <figure className="inv2-doc">
-          <div className="doc-view">
+          <button
+            type="button"
+            className="doc-view invoice-preview-trigger"
+            aria-label={`Enlarge invoice ${invoice.id}`}
+            aria-haspopup="dialog"
+            onClick={() => setPreviewOpen(true)}
+          >
             <img src={invoice.image} alt={`Rendering of ${invoice.file}`} width="640" height={invoice.id === '005' ? 693 : 476} />
-          </div>
+            <span className="invoice-expand" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5M3 3l6 6m12-6-6 6M3 21l6-6m12 6-6-6" />
+              </svg>
+            </span>
+          </button>
           <figcaption>Fictional invoice made by AI</figcaption>
         </figure>
 
@@ -248,6 +261,7 @@ function InvoiceDemo() {
         </div>
       </div>
 
+      {previewOpen && <InvoicePreview invoice={invoice} onClose={() => setPreviewOpen(false)} />}
     </div>
   )
 }
