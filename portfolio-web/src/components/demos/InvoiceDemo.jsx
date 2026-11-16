@@ -214,7 +214,7 @@ function InvoiceDemo() {
           <div className="doc-view">
             <img src={invoice.image} alt={`Rendering of ${invoice.file}`} width="640" height={invoice.id === '005' ? 693 : 476} />
           </div>
-          <figcaption>{invoice.file}</figcaption>
+          <figcaption>Fictional invoice made by AI</figcaption>
         </figure>
 
         <div className="inv2-flow">
